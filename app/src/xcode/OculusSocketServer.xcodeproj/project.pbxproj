@@ -1,0 +1,467 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0091D8F90E81B9330029341E /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0091D8F80E81B9330029341E /* OpenGL.framework */; };
+		00B784B30FF439BC000DE1D7 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784AF0FF439BC000DE1D7 /* Accelerate.framework */; };
+		00B784B40FF439BC000DE1D7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B00FF439BC000DE1D7 /* AudioToolbox.framework */; };
+		00B784B50FF439BC000DE1D7 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B10FF439BC000DE1D7 /* AudioUnit.framework */; };
+		00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B20FF439BC000DE1D7 /* CoreAudio.framework */; };
+		121FD56B51C04A09AC9238C5 /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F7E3838ECFB4553A799DD68 /* sha1.cpp */; };
+		50B828FD902E4D1D8464C546 /* WebSocketClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41131BC707B2491994B3AFAC /* WebSocketClient.cpp */; };
+		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
+		5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		B5A3F3C6178F8955003918DF /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A3F3C5178F8955003918DF /* IOKit.framework */; };
+		B5A3F3C8178F895A003918DF /* IOSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A3F3C7178F895A003918DF /* IOSurface.framework */; };
+		B5F53C2C17966C650058BEFC /* status.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B5F53C2B17966C650058BEFC /* status.jpg */; };
+		B5F53C3017970E220058BEFC /* oculus_bridge.icns in Resources */ = {isa = PBXBuildFile; fileRef = B5F53C2F17970E220058BEFC /* oculus_bridge.icns */; };
+		B5F53C33179737CD0058BEFC /* Oculus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5F53C31179737CD0058BEFC /* Oculus.cpp */; };
+		DC9CC02B1EEF4C17A481ED9E /* WebSocketServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FA34BC5C6AA4FC193A066FB /* WebSocketServer.cpp */; };
+		F311E53EBF0F45DF8509B459 /* WebSocketConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB574B3000640F2986F9A4B /* WebSocketConnection.cpp */; };
+		FDF3B1DCF231434891B9F8EA /* OculusSocketServerApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F784951237425985E023F8 /* OculusSocketServerApp.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0091D8F80E81B9330029341E /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		00B784AF0FF439BC000DE1D7 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		00B784B00FF439BC000DE1D7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		00B784B10FF439BC000DE1D7 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		00B784B20FF439BC000DE1D7 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		08BDC3F915A9442F9DE9F128 /* utilities.hpp */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; name = utilities.hpp; path = "../blocks/Cinder-WebSocketPP/src/websocketpp/utilities.hpp"; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		120765C86ACF4A3F8E25307A /* endpoint.hpp */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; name = endpoint.hpp; path = "../blocks/Cinder-WebSocketPP/src/websocketpp/endpoint.hpp"; sourceTree = "<group>"; };
+		1AA208CBE03E468897140628 /* OculusSocketServer_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = OculusSocketServer_Prefix.pch; sourceTree = "<group>"; };
+		1B4DD49A75EB4C90A60FADC5 /* sha1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = sha1.h; path = "../blocks/Cinder-WebSocketPP/src/websocketpp/sha1/sha1.h"; sourceTree = "<group>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		2C52579644B8480E99A5B3EB /* base64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = base64.h; path = "../blocks/Cinder-WebSocketPP/src/websocketpp/base64/base64.h"; sourceTree = "<group>"; };
+		2FBE7F1193914A338B7DA963 /* error_container.hpp */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; name = error_container.hpp; path = "../blocks/Cinder-WebSocketPP/src/websocketpp/error_container.hpp"; sourceTree = "<group>"; };
+		3F7E3838ECFB4553A799DD68 /* sha1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = sha1.cpp; path = "../blocks/Cinder-WebSocketPP/src/websocketpp/sha1/sha1.cpp"; sourceTree = "<group>"; };
+		41131BC707B2491994B3AFAC /* WebSocketClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = WebSocketClient.cpp; path = "../blocks/Cinder-WebSocketPP/src/WebSocketClient.cpp"; sourceTree = "<group>"; };
+		5323E6B10EAFCA74003A9687 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
+		5323E6B50EAFCA7E003A9687 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		53D104508F484BDCA640CE01 /* error.hpp */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; name = error.hpp; path = "../blocks/Cinder-WebSocketPP/src/websocketpp/error.hpp"; sourceTree = "<group>"; };
+		58AFEBE843364697818922CD /* connection_base.hpp */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; name = connection_base.hpp; path = "../blocks/Cinder-WebSocketPP/src/websocketpp/connection_base.hpp"; sourceTree = "<group>"; };
+		6E7E68F034FB4FA1B0472079 /* connection.hpp */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; name = connection.hpp; path = "../blocks/Cinder-WebSocketPP/src/websocketpp/connection.hpp"; sourceTree = "<group>"; };
+		748AE4B37EB043048A208CBA /* WebSocketServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WebSocketServer.h; path = "../blocks/Cinder-WebSocketPP/src/WebSocketServer.h"; sourceTree = "<group>"; };
+		780408410C234413AC5F6875 /* uri.hpp */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; name = uri.hpp; path = "../blocks/Cinder-WebSocketPP/src/websocketpp/uri.hpp"; sourceTree = "<group>"; };
+		7FA34BC5C6AA4FC193A066FB /* WebSocketServer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = WebSocketServer.cpp; path = "../blocks/Cinder-WebSocketPP/src/WebSocketServer.cpp"; sourceTree = "<group>"; };
+		89B33B50A70D4769A56776D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* Oculus Bridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oculus Bridge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		91F784951237425985E023F8 /* OculusSocketServerApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = OculusSocketServerApp.cpp; path = ../src/OculusSocketServerApp.cpp; sourceTree = "<group>"; };
+		9EF964F1168C4D72AC4C46C7 /* utf8_validator.hpp */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; name = utf8_validator.hpp; path = "../blocks/Cinder-WebSocketPP/src/websocketpp/utf8_validator.hpp"; sourceTree = "<group>"; };
+		A276CF77E90E4B28B6E2E42B /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
+		A34BD0150AA449769C7F5C0F /* frame.hpp */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; name = frame.hpp; path = "../blocks/Cinder-WebSocketPP/src/websocketpp/frame.hpp"; sourceTree = "<group>"; };
+		A866E307B04F495FBBD85477 /* client.hpp */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; name = client.hpp; path = "../blocks/Cinder-WebSocketPP/src/websocketpp/client.hpp"; sourceTree = "<group>"; };
+		AEB574B3000640F2986F9A4B /* WebSocketConnection.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = WebSocketConnection.cpp; path = "../blocks/Cinder-WebSocketPP/src/WebSocketConnection.cpp"; sourceTree = "<group>"; };
+		B5A22D82738641CC9124BD39 /* WebSocketConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WebSocketConnection.h; path = "../blocks/Cinder-WebSocketPP/src/WebSocketConnection.h"; sourceTree = "<group>"; };
+		B5A3F3C5178F8955003918DF /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		B5A3F3C7178F895A003918DF /* IOSurface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSurface.framework; path = System/Library/Frameworks/IOSurface.framework; sourceTree = SDKROOT; };
+		B5F53C2B17966C650058BEFC /* status.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = status.jpg; path = ../resources/status.jpg; sourceTree = "<group>"; };
+		B5F53C2F17970E220058BEFC /* oculus_bridge.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = oculus_bridge.icns; path = ../resources/oculus_bridge.icns; sourceTree = "<group>"; };
+		B5F53C31179737CD0058BEFC /* Oculus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Oculus.cpp; path = ../src/Oculus.cpp; sourceTree = "<group>"; };
+		B5F53C32179737CD0058BEFC /* Oculus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Oculus.h; path = ../src/Oculus.h; sourceTree = "<group>"; };
+		B6101B29B27740A99C5A9516 /* common.hpp */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; name = common.hpp; path = "../blocks/Cinder-WebSocketPP/src/websocketpp/common.hpp"; sourceTree = "<group>"; };
+		BA826D64E1C34D00B90C0D87 /* endpoint_base.hpp */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; name = endpoint_base.hpp; path = "../blocks/Cinder-WebSocketPP/src/websocketpp/endpoint_base.hpp"; sourceTree = "<group>"; };
+		C1AFD33E4F964560A7FEA9F8 /* close.hpp */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; name = close.hpp; path = "../blocks/Cinder-WebSocketPP/src/websocketpp/close.hpp"; sourceTree = "<group>"; };
+		C7475BFEECB64110A94D68A0 /* WebSocketClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WebSocketClient.h; path = "../blocks/Cinder-WebSocketPP/src/WebSocketClient.h"; sourceTree = "<group>"; };
+		E28E12076E824A4CAE740B69 /* server.hpp */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; name = server.hpp; path = "../blocks/Cinder-WebSocketPP/src/websocketpp/server.hpp"; sourceTree = "<group>"; };
+		EA0F38DBD74E4AD4A9FEBF68 /* md5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = md5.h; path = "../blocks/Cinder-WebSocketPP/src/websocketpp/md5/md5.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5A3F3C8178F895A003918DF /* IOSurface.framework in Frameworks */,
+				B5A3F3C6178F8955003918DF /* IOKit.framework in Frameworks */,
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				0091D8F90E81B9330029341E /* OpenGL.framework in Frameworks */,
+				5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */,
+				5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */,
+				00B784B30FF439BC000DE1D7 /* Accelerate.framework in Frameworks */,
+				00B784B40FF439BC000DE1D7 /* AudioToolbox.framework in Frameworks */,
+				00B784B50FF439BC000DE1D7 /* AudioUnit.framework in Frameworks */,
+				00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01B97315FEAEA392516A2CEA /* Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				DC3C4BE2E2AF458F9C50E1A2 /* Cinder-WebSocketPP */,
+			);
+			name = Blocks;
+			sourceTree = "<group>";
+		};
+		080E96DDFE201D6D7F000001 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				B5F53C31179737CD0058BEFC /* Oculus.cpp */,
+				B5F53C32179737CD0058BEFC /* Oculus.h */,
+				91F784951237425985E023F8 /* OculusSocketServerApp.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5A3F3C7178F895A003918DF /* IOSurface.framework */,
+				B5A3F3C5178F8955003918DF /* IOKit.framework */,
+				00B784AF0FF439BC000DE1D7 /* Accelerate.framework */,
+				00B784B00FF439BC000DE1D7 /* AudioToolbox.framework */,
+				00B784B10FF439BC000DE1D7 /* AudioUnit.framework */,
+				00B784B20FF439BC000DE1D7 /* CoreAudio.framework */,
+				5323E6B50EAFCA7E003A9687 /* QTKit.framework */,
+				5323E6B10EAFCA74003A9687 /* CoreVideo.framework */,
+				0091D8F80E81B9330029341E /* OpenGL.framework */,
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* Oculus Bridge.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* OculusSocketServer */ = {
+			isa = PBXGroup;
+			children = (
+				01B97315FEAEA392516A2CEA /* Blocks */,
+				29B97315FDCFA39411CA2CEA /* Headers */,
+				080E96DDFE201D6D7F000001 /* Source */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = OculusSocketServer;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				A276CF77E90E4B28B6E2E42B /* Resources.h */,
+				1AA208CBE03E468897140628 /* OculusSocketServer_Prefix.pch */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B5F53C2F17970E220058BEFC /* oculus_bridge.icns */,
+				B5F53C2B17966C650058BEFC /* status.jpg */,
+				89B33B50A70D4769A56776D3 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		70CB5C65C978409A81150CAB /* src */ = {
+			isa = PBXGroup;
+			children = (
+				41131BC707B2491994B3AFAC /* WebSocketClient.cpp */,
+				AEB574B3000640F2986F9A4B /* WebSocketConnection.cpp */,
+				7FA34BC5C6AA4FC193A066FB /* WebSocketServer.cpp */,
+				FD59F0CF42E740BD9310D621 /* websocketpp */,
+				C7475BFEECB64110A94D68A0 /* WebSocketClient.h */,
+				B5A22D82738641CC9124BD39 /* WebSocketConnection.h */,
+				748AE4B37EB043048A208CBA /* WebSocketServer.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		D64A9C68D12A4DB2BC4AA77A /* base64 */ = {
+			isa = PBXGroup;
+			children = (
+				2C52579644B8480E99A5B3EB /* base64.h */,
+			);
+			name = base64;
+			sourceTree = "<group>";
+		};
+		D81E6842E283450DADF0408D /* md5 */ = {
+			isa = PBXGroup;
+			children = (
+				EA0F38DBD74E4AD4A9FEBF68 /* md5.h */,
+			);
+			name = md5;
+			sourceTree = "<group>";
+		};
+		DC3C4BE2E2AF458F9C50E1A2 /* Cinder-WebSocketPP */ = {
+			isa = PBXGroup;
+			children = (
+				70CB5C65C978409A81150CAB /* src */,
+			);
+			name = "Cinder-WebSocketPP";
+			sourceTree = "<group>";
+		};
+		E15CD3B54F12482EA15F7B0B /* sha1 */ = {
+			isa = PBXGroup;
+			children = (
+				3F7E3838ECFB4553A799DD68 /* sha1.cpp */,
+				1B4DD49A75EB4C90A60FADC5 /* sha1.h */,
+			);
+			name = sha1;
+			sourceTree = "<group>";
+		};
+		FD59F0CF42E740BD9310D621 /* websocketpp */ = {
+			isa = PBXGroup;
+			children = (
+				E15CD3B54F12482EA15F7B0B /* sha1 */,
+				A866E307B04F495FBBD85477 /* client.hpp */,
+				C1AFD33E4F964560A7FEA9F8 /* close.hpp */,
+				B6101B29B27740A99C5A9516 /* common.hpp */,
+				6E7E68F034FB4FA1B0472079 /* connection.hpp */,
+				58AFEBE843364697818922CD /* connection_base.hpp */,
+				120765C86ACF4A3F8E25307A /* endpoint.hpp */,
+				BA826D64E1C34D00B90C0D87 /* endpoint_base.hpp */,
+				53D104508F484BDCA640CE01 /* error.hpp */,
+				2FBE7F1193914A338B7DA963 /* error_container.hpp */,
+				A34BD0150AA449769C7F5C0F /* frame.hpp */,
+				E28E12076E824A4CAE740B69 /* server.hpp */,
+				780408410C234413AC5F6875 /* uri.hpp */,
+				9EF964F1168C4D72AC4C46C7 /* utf8_validator.hpp */,
+				08BDC3F915A9442F9DE9F128 /* utilities.hpp */,
+				D64A9C68D12A4DB2BC4AA77A /* base64 */,
+				D81E6842E283450DADF0408D /* md5 */,
+			);
+			name = websocketpp;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* Oculus Bridge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Oculus Bridge" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Oculus Bridge";
+			productInstallPath = "$(HOME)/Applications";
+			productName = OculusSocketServer;
+			productReference = 8D1107320486CEB800E47090 /* Oculus Bridge.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "OculusSocketServer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* OculusSocketServer */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1107260486CEB800E47090 /* Oculus Bridge */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5F53C2C17966C650058BEFC /* status.jpg in Resources */,
+				B5F53C3017970E220058BEFC /* oculus_bridge.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDF3B1DCF231434891B9F8EA /* OculusSocketServerApp.cpp in Sources */,
+				50B828FD902E4D1D8464C546 /* WebSocketClient.cpp in Sources */,
+				F311E53EBF0F45DF8509B459 /* WebSocketConnection.cpp in Sources */,
+				DC9CC02B1EEF4C17A481ED9E /* WebSocketServer.cpp in Sources */,
+				121FD56B51C04A09AC9238C5 /* sha1.cpp in Sources */,
+				B5F53C33179737CD0058BEFC /* Oculus.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = OculusSocketServer_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"\"$(CINDER_PATH)/boost\"",
+					"~/Dev/OculusSDK/LibOVR/Include",
+				);
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = "\"../blocks/Cinder-WebSocketPP/lib/macosx\"";
+				OTHER_LDFLAGS = (
+					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
+					"\"../blocks/Cinder-WebSocketPP/lib/macosx/libboost_random.a\"",
+					"\"../blocks/Cinder-WebSocketPP/lib/macosx/libboost_regex.a\"",
+					"$(OCULUS_SDK)/LibOVR/Lib/MacOS/Debug/libovr.a",
+				);
+				PRODUCT_NAME = "Oculus Bridge";
+				SYMROOT = ./build;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C01FCF4C08A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_FAST_MATH = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = OculusSocketServer_Prefix.pch;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"\"$(CINDER_PATH)/boost\"",
+					"~/Dev/OculusSDK/LibOVR/Include",
+				);
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = "\"../blocks/Cinder-WebSocketPP/lib/macosx\"";
+				OTHER_LDFLAGS = (
+					"\"$(CINDER_PATH)/lib/libcinder.a\"",
+					"\"../blocks/Cinder-WebSocketPP/lib/macosx/libboost_random.a\"",
+					"\"../blocks/Cinder-WebSocketPP/lib/macosx/libboost_regex.a\"",
+					"$(OCULUS_SDK)/LibOVR/Lib/MacOS/Release/libovr.a",
+				);
+				PRODUCT_NAME = "Oculus Bridge";
+				STRIP_INSTALLED_PRODUCT = YES;
+				SYMROOT = ./build;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = i386;
+				CINDER_PATH = ../../cinder_0.8.5;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OCULUS_SDK = ../../OculusSDK;
+				PRODUCT_NAME = "Oculus Bridge";
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include \"../blocks/Cinder-WebSocketPP/src\"";
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = i386;
+				CINDER_PATH = ../../cinder_0.8.5;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OCULUS_SDK = ../../OculusSDK;
+				PRODUCT_NAME = "Oculus Bridge";
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include \"../blocks/Cinder-WebSocketPP/src\"";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Oculus Bridge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "OculusSocketServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

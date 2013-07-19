@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>OculusBridge - VR Scene</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+    
+      body {
+        font-family: Monospace;
+        background-color: #000;
+        color: #000;
+        margin: 0px;
+        overflow: hidden;
+      }
+      
+      #info{
+        padding:10px;
+        color:#fff;
+        position:absolute;
+        background-color:rgba(0,0,0,0.4);
+      }
+
+      #logo{
+        width:50px;
+        height:50px;
+        position:absolute;
+        top:10px;
+        right:10px;
+        cursor:pointer;
+        background-image:url(img/oculus_bridge.png);
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+    <a id="logo" href="https://github.com/Instrument/oculus-bridge"></a>
+    <div id="info">
+      <input type="button" id="toggle-render" value="toggle render mode"> <input type="button" id="help" value="help"> 
+      <pre id="help-text" style="display:none;">
+Controls in Stereo mode:
+
+forward:      W or UP:
+backward:     S or DOWN
+
+straif left:  A or LEFT
+straif right: D or RIGHT
+
+turn left:    Q
+turn right:   E
+
+jump:         SPACE
+
+
+Controls in perspective mode:
+
+orbit:  left-click + drag
+pan:    right-click + drag
+zoom:   mouse wheel
+      </pre>
+    </div>
+
+    <div id="viewport"></div>
+    
+    <script src="../web/build/OculusBridge.min.js"></script>
+
+    <script src="lib/three.min.r59.js"></script>
+    <script src="lib/OrbitControls.js"></script>
+    <script src="lib/RiftCamera.js"></script>
+
+    <script src="js/example.js"></script>
+  </body>
+</html>

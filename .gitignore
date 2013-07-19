@@ -1,1 +1,10 @@
 .DS_Store
+
+*.pbxuser
+*.perspective
+*.perspectivev3
+
+*.xcodeproj/xcuserdata/*.xcuserdatad
+*.xcodeproj/project.xcworkspace/xcuserdata/*.xcuserdatad
+
+web/node_modules/*
