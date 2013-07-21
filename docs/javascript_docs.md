@@ -52,4 +52,4 @@ The OculusBridge object accepts a single configuration object that may contain a
 
 `getOrientation` - an alternative to using the `onOrientationUpdate` callback, this method returns the last known quaternion values sent from the server.
 
-`getConfiguration` - returns the metrics for the head mounted display.  If a connection has not been made, these will default to the metrics for the development model.
+`getConfiguration` - an alternative to using the `onConfigUpdate` callback, this method returns the metrics for the head mounted display.  If a connection has not been made, the values will default to the metrics for the currently released development hardware.

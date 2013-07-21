@@ -9,9 +9,9 @@ The goal of this project is to provide a flexible, modular way to access the tra
 
 ## Requirements
 
-- A browser that supports websockets
 - An Oculus Rift
-
+- A browser that supports websockets
+- The OculusBrige application
 
 
 ## Basic Usage
@@ -26,7 +26,7 @@ The order that these things occur isn't important.  The app and javascript are b
 
 ## JavaScript Library
 
-To add Oculus Rift support to your web project, simply include `OculusBridge.js` in your HTML.  The bridge is purely a way to access the rift hardware and does not make any assumptions about the renderer.  It is especially easy to use the bridge with THREE.js but there is no specific dependancy on THREE.js at this time.
+To add Oculus Rift support to your web project, download and include `OculusBridge.min.js` in your HTML.  The bridge is purely a way to access data from the rift hardware and does not make any assumptions about the renderer.  It is especially easy to use the bridge with THREE.js but there is no specific dependancy on THREE.js at this time.
 
 For example, here is how you would hook the orientation of the Oculus Rift up so it controls the orientation of an object in a THREE.js scene.  The following code would be run during initialization.
 
