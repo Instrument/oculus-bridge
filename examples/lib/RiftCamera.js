@@ -134,6 +134,9 @@ THREE.OculusRiftEffect = function ( renderer, options ) {
 		RTMaterial.uniforms['chromAbParam'].value = new THREE.Vector4(HMD.chromaAbParameter[0], HMD.chromaAbParameter[1], HMD.chromaAbParameter[2], HMD.chromaAbParameter[3]);
 		RTMaterial.uniforms['scaleIn'].value = new THREE.Vector2(1.0,1.0/aspect);
 		RTMaterial.uniforms['scale'].value = new THREE.Vector2(1.0/distScale, 1.0*aspect/distScale);
+		console.log(lensShift);
+		console.log("ScaleIn",  new THREE.Vector2(1.0,1.0/aspect));
+		console.log("Scale",  new THREE.Vector2(1.0,1.0/aspect));
 
 		// Create render target
 		renderTarget = new THREE.WebGLRenderTarget( HMD.hResolution*distScale/2, HMD.vResolution*distScale, RTParams );

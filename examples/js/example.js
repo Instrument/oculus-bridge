@@ -169,7 +169,7 @@ function init(){
   initGeometry();
   initLights();
   
-  oculusBridge = OculusBridge({
+  oculusBridge = new OculusBridge({
     "debug" : true,
     "onOrientationUpdate" : bridgeOrientationUpdated,
     "onConfigUpdate"      : bridgeConfigUpdated
@@ -200,9 +200,9 @@ function bridgeConfigUpdated(config){
   riftCam.setHMD(config);      
 }
 
-function bridgeOrientationUpdated(w, x, y, z) {
+function bridgeOrientationUpdated(quatValues) {
 
-   // Do first-person style controls (like the Tuscany demo) using the rift and keyboard.
+  // Do first-person style controls (like the Tuscany demo) using the rift and keyboard.
 
   // TODO: Don't instantiate new objects in here, these should be re-used to avoid garbage collection.
 
@@ -211,19 +211,19 @@ function bridgeOrientationUpdated(w, x, y, z) {
   quat.setFromAxisAngle(bodyAxis, bodyAngle);
 
   // make a quaternion for the current orientation of the Rift
-  var quatCam = new THREE.Quaternion(x,y,z,w);
+  var quatCam = new THREE.Quaternion(quatValues.x, quatValues.y, quatValues.z, quatValues.w);
 
   // multiply the body rotation by the Rift rotation.
   quat.multiply(quatCam);
 
 
   // Make a vector pointing along the Z axis and rotate it accoring to the combined look/body angle.
-  var h = new THREE.Vector3(0, 0, 1);
-  h.applyQuaternion(quat);
+  var xzVector = new THREE.Vector3(0, 0, 1);
+  xzVector.applyQuaternion(quat);
 
   // Compute the X/Z angle based on the combined look/body angle.  This will be used for FPS style movement controls
   // so you can steer with a combination of the keyboard and by moving your head.
-  viewAngle = Math.atan2(h.z, h.x) + Math.PI;
+  viewAngle = Math.atan2(xzVector.z, xzVector.x) + Math.PI;
 
   // Apply the combined look/body angle to the camera.
   camera.quaternion.copy(quat);

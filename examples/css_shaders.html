@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+body{
+	padding:0px;
+	margin:0px;
+
+	font-family:sans-serif;
+	font-size:20px;
+}
+
+#left_eye {
+	position:absolute;
+	top:0px;
+	left:0px;
+   
+    width:50%;
+    height:100%;
+    
+    background:#900000;
+    background-image:url(img/grid.jpg);
+    background-size: 200%, 200%;
+    background-position:center center;
+    background-repeat:no-repeat;
+}
+
+#right_eye {
+	position:absolute;
+	top:0px;
+	left:50%;
+    
+    width:50%;
+    height:100%;
+    background:#900000;
+    background-image:url(img/grid.jpg);
+    background-size:200%, 200%;
+    background-position:center center;
+    background-repeat:no-repeat;
+}
+
+.oculus_left {
+	 -webkit-filter: custom( 
+    	url(css/distort.vs) 
+        mix(url(css/passthrough.fs) normal source-atop),
+        50 50, lensShift -0.15197649572649574);
+}
+.oculus_right {
+	-webkit-filter: custom( 
+    	url(css/distort.vs) 
+        mix(url(css/passthrough.fs) normal source-atop),
+        50 50, lensShift 0.15197649572649574);
+}
+
+.centered{
+	-webkit-transform:translate3D(0,0,0);
+	margin-top:30%;
+	margin-bottom:30%;
+	margin-right:25%;
+	margin-left:25%;
+	overflow:auto;
+	width:50%;
+	height:40%;
+}
+
+</style>
+
+</head>
+<body>
+
+	<div id="left_eye" class="oculus_left">
+		<div class="centered">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu justo et nulla vestibulum feugiat at vel mauris. Nullam ultrices non dui vel viverra. Etiam iaculis mauris vel nibh eleifend pulvinar. Integer euismod faucibus tortor, non lobortis risus porta ac. Sed sodales, purus mattis mollis lacinia, quam nunc tincidunt mauris, sed faucibus sapien dui ultricies leo. Donec magna lorem, placerat nec nunc placerat, sagittis feugiat nunc. Etiam blandit velit ut justo porta, non sollicitudin nisl rhoncus. Fusce nisi neque, mattis sed leo quis, fringilla pellentesque massa.
+		<br><br>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu justo et nulla vestibulum feugiat at vel mauris. Nullam ultrices non dui vel viverra. Etiam iaculis mauris vel nibh eleifend pulvinar. Integer euismod faucibus tortor, non lobortis risus porta ac. Sed sodales, purus mattis mollis lacinia, quam nunc tincidunt mauris, sed faucibus sapien dui ultricies leo. Donec magna lorem, placerat nec nunc placerat, sagittis feugiat nunc. Etiam blandit velit ut justo porta, non sollicitudin nisl rhoncus. Fusce nisi neque, mattis sed leo quis, fringilla pellentesque massa.
+		<br><br>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu justo et nulla vestibulum feugiat at vel mauris. Nullam ultrices non dui vel viverra. Etiam iaculis mauris vel nibh eleifend pulvinar. Integer euismod faucibus tortor, non lobortis risus porta ac. Sed sodales, purus mattis mollis lacinia, quam nunc tincidunt mauris, sed faucibus sapien dui ultricies leo. Donec magna lorem, placerat nec nunc placerat, sagittis feugiat nunc. Etiam blandit velit ut justo porta, non sollicitudin nisl rhoncus. Fusce nisi neque, mattis sed leo quis, fringilla pellentesque massa.
+		<br><br>
+		</div>
+	</div>
+
+	<div id="right_eye"  class="oculus_right">
+		<div class="centered">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu justo et nulla vestibulum feugiat at vel mauris. Nullam ultrices non dui vel viverra. Etiam iaculis mauris vel nibh eleifend pulvinar. Integer euismod faucibus tortor, non lobortis risus porta ac. Sed sodales, purus mattis mollis lacinia, quam nunc tincidunt mauris, sed faucibus sapien dui ultricies leo. Donec magna lorem, placerat nec nunc placerat, sagittis feugiat nunc. Etiam blandit velit ut justo porta, non sollicitudin nisl rhoncus. Fusce nisi neque, mattis sed leo quis, fringilla pellentesque massa.
+		<br><br>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu justo et nulla vestibulum feugiat at vel mauris. Nullam ultrices non dui vel viverra. Etiam iaculis mauris vel nibh eleifend pulvinar. Integer euismod faucibus tortor, non lobortis risus porta ac. Sed sodales, purus mattis mollis lacinia, quam nunc tincidunt mauris, sed faucibus sapien dui ultricies leo. Donec magna lorem, placerat nec nunc placerat, sagittis feugiat nunc. Etiam blandit velit ut justo porta, non sollicitudin nisl rhoncus. Fusce nisi neque, mattis sed leo quis, fringilla pellentesque massa.
+		<br><br>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu justo et nulla vestibulum feugiat at vel mauris. Nullam ultrices non dui vel viverra. Etiam iaculis mauris vel nibh eleifend pulvinar. Integer euismod faucibus tortor, non lobortis risus porta ac. Sed sodales, purus mattis mollis lacinia, quam nunc tincidunt mauris, sed faucibus sapien dui ultricies leo. Donec magna lorem, placerat nec nunc placerat, sagittis feugiat nunc. Etiam blandit velit ut justo porta, non sollicitudin nisl rhoncus. Fusce nisi neque, mattis sed leo quis, fringilla pellentesque massa.
+		<br><br>
+		</div>
+	</div>
+	<script src="../web/build/OculusBridge.min.js"></script>
+	<script>
+	
+	var oculusBridge;
+	var filtered = true;
+
+	document.body.onload = init;
+
+	function bridgeConfigUpdated( config ){
+		// TODO: hand off config values to CSS shader.
+	}
+
+	function bridgeOrientationUpdated(quatValues) {
+
+	    var xPercent = (-quatValues.x + 1) / 2;
+	    var yPercent = (-quatValues.y + 1) / 2;
+
+	    var max = document.getElementById("left_eye").children[0].scrollHeight - document.getElementById("left_eye").children[0].clientHeight;
+		
+		document.getElementById("left_eye").children[0].scrollTop = max * xPercent;
+		document.getElementById("right_eye").children[0].scrollTop = max * xPercent;
+	}
+
+	function init(){
+		oculusBridge = OculusBridge({
+			onOrientationUpdate : bridgeOrientationUpdated,
+			onConfigUpdate      : bridgeConfigUpdated,
+		});
+
+		oculusBridge.connect();
+
+
+		document.body.onclick = function() {
+			if(filtered){
+				document.getElementById("left_eye").className = "";
+				document.getElementById("right_eye").className = "";
+			}else {
+				document.getElementById("left_eye").className = "oculus_left";
+				document.getElementById("right_eye").className = "oculus_right";
+			}
+			filtered = !filtered;
+		}
+	}
+	</script>
+</body>
+</html>

@@ -66,7 +66,7 @@ function onResize() {
 }
 
 
-function bridgeConfigUpdated( config ){
+function bridgeConfigUpdated(config){
   var stats = document.getElementById("stats");
   
   stats.innerHTML = "Display Configuration<hr>";
@@ -78,8 +78,8 @@ function bridgeConfigUpdated( config ){
   }
 }
 
-function bridgeOrientationUpdated(w, x, y, z) {
-  referenceCube.quaternion.set(x,y,z,w);
+function bridgeOrientationUpdated(quat) {
+  referenceCube.quaternion.set(quat.x, quat.y, quat.z, quat.w);
 }
 
 function bridgeConnected(){
@@ -114,7 +114,7 @@ function init(){
     
   // Create the bridge object and attempt to connect.
 
-  oculusBridge = OculusBridge({
+  oculusBridge = new OculusBridge({
     onOrientationUpdate : bridgeOrientationUpdated,
     onConfigUpdate      : bridgeConfigUpdated,
     onConnect           : bridgeConnected,

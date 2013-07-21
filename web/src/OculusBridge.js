@@ -10,13 +10,15 @@ var OculusBridge = function(config) {
 	var debugEnabled		= config.hasOwnProperty("debug") ? config["debug"] : false;
 
 	// Quaternion values
-	var x = 0;
-	var y = 0;
-	var z = 0;
-	var w = 0;
+	var quaternionValues = { 
+		x : 0,
+		y : 0,
+		z : 0,
+		w : 0 
+	};
 
 	// Defaults
-	var HMD_Params = {
+	var displayMetrics = {
 		FOV 					: 125.871,
 
 		hScreenSize				: 0.14976,
@@ -55,36 +57,36 @@ var OculusBridge = function(config) {
 
 		if(data["o"] && (data["o"].length == 4)) {
 			
-			x = Number(data["o"][1]);
-			y = Number(data["o"][2]);
-			z = Number(data["o"][3]);
-			w = Number(data["o"][0]);
+			quaternionValues.x = Number(data["o"][1]);
+			quaternionValues.y = Number(data["o"][2]);
+			quaternionValues.z = Number(data["o"][3]);
+			quaternionValues.w = Number(data["o"][0]);
 
 			if(callbacks["onOrientationUpdate"]) {
-				callbacks["onOrientationUpdate"](w, x, y, z);
+				callbacks["onOrientationUpdate"](quaternionValues);
 			}
 		}
 	}
 
 	var updateConfig = function(data) {
-		HMD_Params.hScreenSize				= data["screenSize"][0];
-		HMD_Params.vScreenSize				= data["screenSize"][1];
-		HMD_Params.vScreenCenter			= data["screenSize"][1] / 2;
+		displayMetrics.hScreenSize				= data["screenSize"][0];
+		displayMetrics.vScreenSize				= data["screenSize"][1];
+		displayMetrics.vScreenCenter			= data["screenSize"][1] / 2;
 
-		HMD_Params.eyeToScreenDistance		= data["eyeToScreen"];
+		displayMetrics.eyeToScreenDistance		= data["eyeToScreen"];
 
-		HMD_Params.lensSeparationDistance	= data["lensDistance"];
-		HMD_Params.interpupillaryDistance	= data["interpupillaryDistance"];
+		displayMetrics.lensSeparationDistance	= data["lensDistance"];
+		displayMetrics.interpupillaryDistance	= data["interpupillaryDistance"];
 
-		HMD_Params.hResolution				= data["screenResolution"][0];
-		HMD_Params.vResolution				= data["screenResolution"][1];
+		displayMetrics.hResolution				= data["screenResolution"][0];
+		displayMetrics.vResolution				= data["screenResolution"][1];
 
-		HMD_Params.distortionK				= [ data["distortion"][0], data["distortion"][1], data["distortion"][2], data["distortion"][3] ];
+		displayMetrics.distortionK				= [ data["distortion"][0], data["distortion"][1], data["distortion"][2], data["distortion"][3] ];
 
-		HMD_Params.FOV						= data["fov"];
+		displayMetrics.FOV						= data["fov"];
 
 		if(callbacks["onConfigUpdate"]) {
-			callbacks["onConfigUpdate"]( HMD_Params );
+			callbacks["onConfigUpdate"]( displayMetrics );
 		}
 	}
 
@@ -165,8 +167,12 @@ var OculusBridge = function(config) {
 		socket.close();
 	}
 
+	var getConfiguration = function(){
+		return displayMetrics;
+	}
+
 	var getOrientation = function(){
-		return [w, x, y, z];
+		return quaternionValues;
 	}
 
 	var isConnected = function(){
@@ -177,6 +183,7 @@ var OculusBridge = function(config) {
 		"isConnected" : isConnected,
 		"disconnect" : disconnect,
 		"connect" : connect,
-		"getOrientation" : getOrientation
+		"getOrientation" : getOrientation,
+		"getConfiguration" : getConfiguration
 	}
 };
