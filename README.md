@@ -11,22 +11,40 @@ The goal of this project is to provide a flexible, modular way to access the tra
 
 - An Oculus Rift
 - A browser that supports websockets
-- The OculusBrige application
+- The [OculusBrige application](https://github.com/Instrument/oculus-bridge/tree/master/app/build) (currently Mac-only, stay tuned..)
+
 
 
 ## Basic Usage
 
-- Download and launch the bridge application
+- Download and launch the [OculusBrige application](https://github.com/Instrument/oculus-bridge/tree/master/app/build)
 - Open a web page that makes use of the OculusBridge javascript library
 - Plug in your Oculus Rift (you probably already did this already..)
 
 The order that these things occur isn't important.  The app and javascript are built to handle loosing connectivity, having the hardware connected and disconnected randomly at runtime, etc.
 
 
+## Browser/Platform Support
 
-## JavaScript Library
+##### Javascript library
 
-To add Oculus Rift support to your web project, download and include `OculusBridge.min.js` in your HTML.  The bridge is purely a way to access data from the rift hardware and does not make any assumptions about the renderer.  It is especially easy to use the bridge with THREE.js but there is no specific dependancy on THREE.js at this time.
+The javascript library has been tested with the following browsers
+
+- Chrome 28
+- Safari 6
+- Firefox 22
+
+##### OculusBridge Application
+
+The bridge application has only been compiled for MacOS Mountain Lion.  However, the application is written using [Cinder](http://www.libcinder.org) and does not rely on any code specific to MacOS.
+
+A build for Windows is very possible and will hopefully be added to the repository soon.
+
+
+
+## Using the JavaScript Library
+
+To add Oculus Rift support to your web project, download and include [OculusBridge.min.js](https://github.com/Instrument/oculus-bridge/tree/master/web/build) in your HTML.  The bridge is purely a way to access data from the rift hardware and does not make any assumptions about the renderer.  It is especially easy to use the bridge with THREE.js but there is no specific dependancy on THREE.js at this time.
 
 For example, here is how you would hook the orientation of the Oculus Rift up so it controls the orientation of an object in a THREE.js scene.  The following code would be run during initialization.
 
