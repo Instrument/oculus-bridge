@@ -46,7 +46,9 @@ A build for Windows is very possible and will hopefully be added to the reposito
 
 To add Oculus Rift support to your web project, download and include [OculusBridge.min.js](https://github.com/Instrument/oculus-bridge/tree/master/web/build) in your HTML.  The bridge is purely a way to access data from the rift hardware and does not make any assumptions about the renderer.  It is especially easy to use the bridge with THREE.js but there is no specific dependancy on THREE.js at this time.
 
-For example, here is how you would hook the orientation of the Oculus Rift up so it controls the orientation of an object in a THREE.js scene.  The following code would be run during initialization.
+Check out the [examples](https://github.com/Instrument/oculus-bridge/tree/master/examples) and [docs](https://github.com/Instrument/oculus-bridge/tree/master/docs) for more details.
+
+Here is how you would hook the orientation of the Oculus Rift up so it controls the orientation of an object in a THREE.js scene.  The following code would be run during initialization.
 
 
 	// rotate a THREE.js object based on the orientation of the Oculus Rift
@@ -55,7 +57,6 @@ For example, here is how you would hook the orientation of the Oculus Rift up so
 		"onOrientationUpdate" : function(quat) {
 			giantSquid.quaternion.set(quat.x, quat.y, quat.z, quat.w);
 		}
-	}
 	});
 
 	bridge.connect();
