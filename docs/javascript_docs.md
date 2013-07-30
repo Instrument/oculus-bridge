@@ -17,7 +17,7 @@ The OculusBridge object accepts a single configuration object that may contain a
 
 `debug` - **boolean**, default is false, this parameter 
 
-`port` - **number**, default is 9005, but can be changed but this is not advised if you are going to make your content public since anyone else using the bridge app will not be expecting this.
+`port` - **number**, default is 9005, changing this value is not advised if you are planning to make your content public since anyone else using the bridge app will not be expecting the non-default port.
 
 `address` - **string**, default is "localhost".  IMPORTANT: currently the bridge app will refuse any websocket connection that doesn't originate from localhost.  This may change in the future but until then you should leave this parameter alone unless you're going to make a custom build of the app.
 
