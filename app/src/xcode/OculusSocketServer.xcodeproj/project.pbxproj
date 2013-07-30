@@ -327,7 +327,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$(CINDER_PATH)/boost\"",
-					"~/Dev/OculusSDK/LibOVR/Include",
+					"$(OCULUS_SDK)/LibOVR/Include",
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -361,7 +361,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$(CINDER_PATH)/boost\"",
-					"~/Dev/OculusSDK/LibOVR/Include",
+					"$(OCULUS_SDK)/LibOVR/Include",
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -385,14 +385,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = i386;
-				CINDER_PATH = ../../cinder_0.8.5;
+				CINDER_PATH = ../../../../cinder_0.8.5;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OCULUS_SDK = ../../OculusSDK;
+				OCULUS_SDK = ../../../../OculusSDK;
 				PRODUCT_NAME = "Oculus Bridge";
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include \"../blocks/Cinder-WebSocketPP/src\"";
@@ -404,14 +404,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = i386;
-				CINDER_PATH = ../../cinder_0.8.5;
+				CINDER_PATH = ../../../../cinder_0.8.5;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OCULUS_SDK = ../../OculusSDK;
+				OCULUS_SDK = ../../../../OculusSDK;
 				PRODUCT_NAME = "Oculus Bridge";
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include \"../blocks/Cinder-WebSocketPP/src\"";

@@ -1,10 +1,10 @@
 oculus-bridge
 =============
 
-[Host App](https://github.com/Instrument/oculus-bridge/tree/master/app/build) | [JS library](https://github.com/Instrument/oculus-bridge/tree/master/web/build) | [Documentation](https://github.com/Instrument/oculus-bridge/tree/master/docs) 
-
 
 A simple desktop app and javascript library to link the Oculus Rift with the web.
+
+__Important Bits:__ [Host App](https://github.com/Instrument/oculus-bridge/tree/master/app/build) | [JS library](https://github.com/Instrument/oculus-bridge/tree/master/web/build) | [Documentation](https://github.com/Instrument/oculus-bridge/tree/master/docs) 
 
 
 The goal of this project is to provide a flexible, modular way to access the tracking data and display configuration for the Oculus Rift for use with webGL or any other browser-based content.  This is not the first websocket based utility for the Oculus Rift, but the cross platform code base and modularity of the javascript has been built to support changes in the hardware and ease of integration on the javascript side.
@@ -14,12 +14,12 @@ The goal of this project is to provide a flexible, modular way to access the tra
 
 - An Oculus Rift
 - A browser that supports websockets
-- The [OculusBrige application](https://github.com/Instrument/oculus-bridge/tree/master/app/build)
+- The [OculusBrige host application](https://github.com/Instrument/oculus-bridge/tree/master/app/build)
 
 
 ## Basic Usage
 
-- Download and launch the [OculusBrige application](https://github.com/Instrument/oculus-bridge/tree/master/app/build)
+- Download and launch the [OculusBrige host application](https://github.com/Instrument/oculus-bridge/tree/master/app/build)
 - Open a web page that makes use of the [OculusBridge javascript library](https://github.com/Instrument/oculus-bridge/tree/master/web/build)
 - Plug in your Oculus Rift (you probably already did this already..)
 
