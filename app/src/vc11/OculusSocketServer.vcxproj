@@ -47,6 +47,10 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\cinder_0.8.5_vc2012\boost\;C:\OculusSDK\LibOVR\Include;C:\cinder_0.8.5_vc2012\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\oculus-bridge\app\src\blocks\Cinder-WebSocketPP\lib\msw;C:\cinder_0.8.5_vc2012\lib\msw;C:\cinder_0.8.5_vc2012\lib;C:\OculusSDK\LibOVR\Lib\Win32;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
