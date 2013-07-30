@@ -65,7 +65,7 @@ More extensive [examples](https://github.com/Instrument/oculus-bridge/tree/maste
 
 ## Credits
 
-Thanks to the following libraries and people who make this project possible.  Credit and copyright for these parts go to the respective parties:
+Thanks to the following libraries and people who make this project possible.  Credit and copyright belong to the respective parties:
 
 - [Cinder](http://libcinder.org/) - [license](https://github.com/cinder/Cinder/blob/master/docs/COPYING)
 - [Websocket++](http://www.zaphoyd.com/websocketpp) - [license](https://github.com/zaphoyd/websocketpp/blob/master/COPYING)
