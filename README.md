@@ -11,7 +11,7 @@ __Important Bits:__
 - [Documentation](https://github.com/Instrument/oculus-bridge/tree/master/docs) 
 
 
-The goal of this project is to provide a flexible, modular way to access the tracking data and display configuration for the Oculus Rift for use with webGL or any other browser-based content.  This is not the first websocket based utility for the Oculus Rift, but the cross platform code base and modularity of the javascript has been built to support changes in the hardware and ease of integration on the javascript side.
+The goal of this project is to provide a flexible, simple way to access the tracking data and display configuration for the Oculus Rift for use with webGL or any other browser-based content.  This is not the first websocket based utility for the Oculus Rift, but the cross platform code base and modularity of the javascript has been built to support changes in the hardware and ease of integration on the javascript side.
 
 
 ## Requirements
