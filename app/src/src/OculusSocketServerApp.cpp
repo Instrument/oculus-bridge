@@ -51,8 +51,8 @@ void OculusSocketServerApp::prepareSettings( Settings *settings ){
 
 void OculusSocketServerApp::setup()
 {
-    mServerPort = 9000; // default
-    
+    mServerPort = 9005; // default
+
     string configPath = getAppPath().string() + "/config.json";
     
     if(fs::exists(configPath)) {

@@ -5,7 +5,7 @@ var OculusBridge = function(config) {
 
 	var retryOnDisconnect 	= true;
 	var websocketAddress 	= config.hasOwnProperty("address") 			? config["address"] 		: "localhost";
-	var websocketPort 		= config.hasOwnProperty("port") 			? config["port"] 			: 9000;
+	var websocketPort 		= config.hasOwnProperty("port") 			? config["port"] 			: 9005;
 	var retryInterval 		= config.hasOwnProperty("retryInterval") 	? config["retryInterval"] 	: 1;
 	var debugEnabled		= config.hasOwnProperty("debug") 			? config["debug"] 			: false;
 
