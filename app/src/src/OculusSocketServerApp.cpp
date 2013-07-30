@@ -41,17 +41,16 @@ class OculusSocketServerApp : public AppNative {
     gl::Texture         mBackgroundTexture;
 };
 
-
 void OculusSocketServerApp::prepareSettings( Settings *settings ){
     settings->setTitle("Oculus Bridge");
     settings->setFrameRate(60);
-    settings->setWindowSize(256, 145);
+    settings->setWindowSize(400, 145);
     settings->setResizable(false);
 }
 
 void OculusSocketServerApp::setup()
 {
-    mServerPort = 9005; // default
+    mServerPort = 9005;
 
     string configPath = getAppPath().string() + "/config.json";
     
@@ -115,7 +114,6 @@ void OculusSocketServerApp::onConnect(){
     
     sendHMDConfig();
 }
-
 
 void OculusSocketServerApp::sendHMDConfig(){
 
@@ -189,14 +187,13 @@ void OculusSocketServerApp::draw()
     glColor3f(1.0, 1.0, 1.0);
     gl::draw(mBackgroundTexture);
     
-    glColor3f(0.43921568627451, 0.89803921568627, 0.62352941176471);
-
+    glColor3f(0.16078431372549, 0.83921568627451, 0.88235294117647);
     if(mSocketConnected) {
-        gl::drawSolidRect( Rectf(214, 30, 226, 42));
+        gl::drawSolidRect( Rectf(358, 30, 370, 42) );
     }
 
     if(mOculusVR && mOculusVR->isConnected()) {
-        gl::drawSolidRect( Rectf(214, 104, 226, 116));
+        gl::drawSolidRect( Rectf(358, 104, 370, 116) );
     }
 }
 

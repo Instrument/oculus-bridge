@@ -59,5 +59,13 @@ More extensive [examples](https://github.com/Instrument/oculus-bridge/tree/maste
 	bridge.connect();
 
 
+## Credits
 
+Thanks to the following libraries and people who make this project possible.  Credit and copyright for these parts go to the respective parties:
 
+- [Cinder](http://libcinder.org/) - [license](https://github.com/cinder/Cinder/blob/master/docs/COPYING)
+- [Websocket++](http://www.zaphoyd.com/websocketpp) - [license](https://github.com/zaphoyd/websocketpp/blob/master/COPYING)
+- [Websocket++ Cinder Block]() - 
+- [THREE.js](http://threejs.org/) - [license](https://github.com/mrdoob/three.js/blob/master/LICENSE)
+- [RiftCamera](https://github.com/troffmo5/OculusStreetView) for THREE.js
+- [Oculus Rift SDK](http://developer.oculusvr.com)
