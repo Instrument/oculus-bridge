@@ -17,9 +17,9 @@ The OculusBridge object accepts a single configuration object that may contain a
 
 `debug` - **boolean**, default is false, this parameter 
 
-`port` - **number**, default is 9000, but can be changed if needed.
+`port` - **number**, default is 9005, but can be changed but this is not advised if you are going to make your content public since anyone else using the bridge app will not be expecting this.
 
-`address` - **string**, default is "localhost".
+`address` - **string**, default is "localhost".  IMPORTANT: currently the bridge app will refuse any websocket connection that doesn't originate from localhost.  This may change in the future but until then you should leave this parameter alone unless you're going to make a custom build of the app.
 
 `retryInterval` - **number**, default is 1, the number of seconds to wait between connection attempts.
 
@@ -29,6 +29,9 @@ The OculusBridge object accepts a single configuration object that may contain a
 	var bridge = new OculusBridge( {
 		"onConnect" : function() { 
 			console.log("we are connected!");
+		},
+		"onDisconnect" : function() {
+			console.log("good bye Oculus.");
 		},
 		"onConfigurationUpdate" : function(config) {
 			console.log("Field of view: " + config.FOV);
@@ -52,4 +55,29 @@ The OculusBridge object accepts a single configuration object that may contain a
 
 `getOrientation` - an alternative to using the `onOrientationUpdate` callback, this method returns the last known quaternion values sent from the server.
 
+Example orientation object:
+
+	{
+		"x" : 0.2329875,
+		"y" : 1.1288273,
+		"z" : 0.1837934,
+		"w" : 0.0439387
+	}
+	
 `getConfiguration` - an alternative to using the `onConfigUpdate` callback, this method returns the metrics for the head mounted display.  If a connection has not been made, the values will default to the metrics for the currently released development hardware.
+
+Example configuration object:
+
+	{
+		"FOV" 						: 125.871,
+		"hScreenSize"				: 0.14976,
+		"vScreenSize"				: 0.0935,
+		"vScreenCenter"				: 0.0468,
+		"eyeToScreenDistance"		: 0.041,
+		"lensSeparationDistance"	: 0.067,
+		"interpupillaryDistance"	: 0.0675,
+		"hResolution"				: 1280,
+		"vResolution"				: 720,
+		"distortionK"				: [1, .22, .24, 0],
+		"chromaAbParameter"			: [0.996, -0.004, 1.014, 0]
+	}
