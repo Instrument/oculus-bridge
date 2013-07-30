@@ -11,10 +11,10 @@
  *     * Neither the name of the WebSocket++ Project nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
  * ARE DISCLAIMED. IN NO EVENT SHALL PETER THORSON BE LIABLE FOR ANY
  * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
@@ -22,7 +22,7 @@
  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- * 
+ *
  */
 
 #ifndef WEBSOCKETPP_TRANSPORT_BASE_HPP
@@ -37,30 +37,28 @@
 #include <iostream>
 
 namespace websocketpp {
+/// Transport policies provide network connectivity and timers
+/**
+ * ### Endpoint Interface
+ *
+ * Transport endpoint components needs to provide:
+ *
+ * **init**\n
+ * `lib::error_code init(transport_con_ptr tcon)`\n
+ * init is called by an endpoint once for each newly created connection.
+ * It's purpose is to give the transport policy the chance to perform any
+ * transport specific initialization that couldn't be done via the default
+ * constructor.
+ */
 namespace transport {
 
-// Endpoint callbacks
-typedef lib::function<void(connection_hdl,const lib::error_code&)> accept_handler;
-typedef lib::function<void(connection_hdl,const lib::error_code&)> connect_handler;
+/// The type and signature of the callback passed to the accept method
+typedef lib::function<void(connection_hdl, lib::error_code const &)>
+    accept_handler;
 
-typedef lib::function<void()> endpoint_lock;
-
-// Endpoint interface
-// Methods a transport endpoint must impliment
-
-/// Initialize a connection
-/**
- * Signature: lib::error_code init(transport_con_ptr tcon);
- * 
- * init is called by an endpoint once for each newly created connection. 
- * It's purpose is to give the transport policy the chance to perform any 
- * transport specific initialization that couldn't be done via the default 
- * constructor.
- *
- * @param tcon A pointer to the transport portion of the connection.
- *
- * @return A status code indicating the success or failure of the operation
- */
+/// The type and signature of the callback passed to the connect method
+typedef lib::function<void(connection_hdl, lib::error_code const &)>
+    connect_handler;
 
 } // namespace transport
 } // namespace websocketpp

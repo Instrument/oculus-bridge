@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9CBB67BE-CDC3-4EEA-8324-E1C4F216CC8D}</ProjectGuid>
+    <RootNamespace>OculusSocketServer</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>D:\cinder_0.8.5\boost;D:\cinder_0.8.5\include;D:\OculusSDK\LibOVR\Include;..\blocks\Cinder-WebSocketPP\src;..\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\..\..\cinder_0.8.5\include;..\include</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>cinder_d.lib;libovrd.lib;libovr.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\Microsoft SDKs\Windows\v7.0\Lib;..\blocks\Cinder-WebSocketPP\lib\msw;D:\cinder_0.8.5\lib;D:\cinder_0.8.5\lib\msw;D:\OculusSDK\LibOVR\Lib\Win32</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;LIBCPMT</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\include;"..\..\..\cinder_0.8.5\include";"..\..\..\cinder_0.8.5\boost"</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>"..\..\..\cinder_0.8.5\include";..\include</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>cinder.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>"..\..\..\cinder_0.8.5\lib";"..\..\..\cinder_0.8.5\lib\msw"</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding />
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\blocks\Cinder-WebSocketPP\src\WebSocketClient.cpp" />
+    <ClCompile Include="..\blocks\Cinder-WebSocketPP\src\WebSocketConnection.cpp" />
+    <ClCompile Include="..\blocks\Cinder-WebSocketPP\src\WebSocketServer.cpp" />
+    <ClCompile Include="..\src\Oculus.cpp" />
+    <ClCompile Include="..\src\OculusSocketServerApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\WebSocketClient.h" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\WebSocketConnection.h" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\base64\base64.h" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\base64\base64.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\client.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\close.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\common.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\common\chrono.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\common\connection_hdl.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\common\cpp11.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\common\functional.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\common\memory.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\common\network.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\common\platforms.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\common\random.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\common\regex.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\common\stdint.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\common\system_error.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\common\thread.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\concurrency\basic.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\concurrency\none.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\config\asio.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\config\asio_client.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\config\asio_no_tls.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\config\asio_no_tls_client.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\config\core.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\config\core_client.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\config\debug.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\config\debug_asio.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\config\debug_asio_no_tls.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\connection.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\connection_base.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\endpoint.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\endpoint_base.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\error.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\error_container.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\extensions\extension.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\extensions\permessage_deflate\disabled.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\extensions\permessage_deflate\enabled.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\frame.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\http\constants.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\http\impl\parser.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\http\impl\request.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\http\impl\response.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\http\parser.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\http\request.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\http\response.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\impl\connection_impl.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\impl\endpoint_impl.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\impl\utilities_impl.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\logger\basic.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\logger\levels.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\logger\stub.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\md5\md5.h" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\md5\md5.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\message_buffer\alloc.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\message_buffer\message.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\message_buffer\pool.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\processors\base.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\processors\hybi00.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\processors\hybi07.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\processors\hybi08.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\processors\hybi13.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\processors\processor.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\random\none.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\random\random_device.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\roles\client.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\roles\client_endpoint.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\roles\server.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\roles\server_endpoint.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\server.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\sha1\sha1.h" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\sha1\sha1.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\transport\asio\base.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\transport\asio\connection.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\transport\asio\endpoint.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\transport\asio\security\base.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\transport\asio\security\none.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\transport\asio\security\tls.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\transport\base\connection.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\transport\base\endpoint.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\transport\iostream\base.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\transport\iostream\connection.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\transport\iostream\endpoint.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\uri.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\utf8_validator.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\websocketpp\utilities.hpp" />
+    <ClInclude Include="..\blocks\Cinder-WebSocketPP\src\WebSocketServer.h" />
+    <ClInclude Include="..\include\Resources.h" />
+    <ClInclude Include="..\src\Oculus.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\resources\status.jpg" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

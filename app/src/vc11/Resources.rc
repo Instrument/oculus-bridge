@@ -1,0 +1,4 @@
+#include "../include/Resources.h"
+
+RES_APP_ICON
+RES_BACKGROUND_TEX

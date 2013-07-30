@@ -11,10 +11,10 @@
  *     * Neither the name of the WebSocket++ Project nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
  * ARE DISCLAIMED. IN NO EVENT SHALL PETER THORSON BE LIABLE FOR ANY
  * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
@@ -22,13 +22,11 @@
  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- * 
+ *
  */
 
 #ifndef WEBSOCKETPP_CONCURRENCY_NONE_HPP
 #define WEBSOCKETPP_CONCURRENCY_NONE_HPP
-
-//#include <iostream>
 
 namespace websocketpp {
 namespace concurrency {
@@ -36,28 +34,18 @@ namespace concurrency {
 namespace none_impl {
 class fake_mutex {
 public:
-    fake_mutex() {
-        //std::cout << "fake_mutex constructor: " << this << std::endl;
-    }
-    
-    ~fake_mutex() {
-        //std::cout << "fake_mutex destructor: " << this << std::endl;
-    }
+    fake_mutex() {}
+    ~fake_mutex() {}
 };
 
 class fake_lock_guard {
 public:
-    explicit fake_lock_guard(fake_mutex foo) {
-        //std::cout << "fake_lock_guard constructor: " << this << " mutex: " << &foo << std::endl;
-    }
-    
-    ~fake_lock_guard() {
-        //std::cout << "fake_lock_guard destructor: " << this << std::endl;
-    }
+    explicit fake_lock_guard(fake_mutex foo) {}
+    ~fake_lock_guard() {}
 };
-
 } // namespace none_impl
 
+/// Stub Concurrency policy to remove locking in single threaded projects
 class none {
 public:
     typedef none_impl::fake_mutex mutex_type;

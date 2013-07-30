@@ -11,10 +11,10 @@
  *     * Neither the name of the WebSocket++ Project nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
  * ARE DISCLAIMED. IN NO EVENT SHALL PETER THORSON BE LIABLE FOR ANY
  * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
@@ -22,7 +22,7 @@
  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- * 
+ *
  */
 
 #ifndef WEBSOCKETPP_TRANSPORT_ASIO_BASE_HPP
@@ -38,45 +38,46 @@
 
 namespace websocketpp {
 namespace transport {
-namespace asio {
-
-typedef lib::function<void(const boost::system::error_code &)> 
-    socket_shutdown_handler;
-
+/// Transport policy that uses boost::asio
 /**
  * This policy uses a single boost::asio io_service to provide transport
- * services to a WebSocket++ endpoint. 
- * 
- * 
- * 
- * 
+ * services to a WebSocket++ endpoint.
  */
+namespace asio {
 
+typedef lib::function<void(boost::system::error_code const &)>
+    socket_shutdown_handler;
+
+/// Asio transport errors
 namespace error {
 enum value {
     /// Catch-all error for transport policy errors that don't fit in other
     /// categories
     general = 1,
-    
+
     /// async_read_at_least call requested more bytes than buffer can store
     invalid_num_bytes,
-    
+
     /// there was an error in the underlying transport library
     pass_through,
-    
+
     /// The connection to the requested proxy server failed
     proxy_failed,
-    
+
     /// Invalid Proxy URI
-    proxy_invalid
+    proxy_invalid,
+
+    /// Invalid host or service
+    invalid_host_service
 };
 
+/// Asio transport error category
 class category : public lib::error_category {
 public:
-    const char *name() const _WEBSOCKETPP_NOEXCEPT_TOKEN_ {
+    char const * name() const _WEBSOCKETPP_NOEXCEPT_TOKEN_ {
         return "websocketpp.transport.asio";
     }
-    
+
     std::string message(int value) const {
         switch(value) {
             case error::general:
@@ -89,17 +90,21 @@ public:
                 return "Proxy connection failed";
             case error::proxy_invalid:
                 return "Invalid proxy URI";
+            case error::invalid_host_service:
+                return "Invalid host or service";
             default:
                 return "Unknown";
         }
     }
 };
 
-inline const lib::error_category& get_category() {
+/// Get a reference to a static copy of the asio transport error category
+inline lib::error_category const & get_category() {
     static category instance;
     return instance;
 }
 
+/// Create an error code with the given value and the asio transport category
 inline lib::error_code make_error_code(error::value e) {
     return lib::error_code(static_cast<int>(e), get_category());
 }
@@ -112,7 +117,7 @@ inline lib::error_code make_error_code(error::value e) {
 _WEBSOCKETPP_ERROR_CODE_ENUM_NS_START_
 template<> struct is_error_code_enum<websocketpp::transport::asio::error::value>
 {
-    static const bool value = true;
+    static bool const value = true;
 };
 _WEBSOCKETPP_ERROR_CODE_ENUM_NS_END_
 #endif // WEBSOCKETPP_TRANSPORT_ASIO_HPP

@@ -11,10 +11,10 @@
  *     * Neither the name of the WebSocket++ Project nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
  * ARE DISCLAIMED. IN NO EVENT SHALL PETER THORSON BE LIABLE FOR ANY
  * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
@@ -22,7 +22,7 @@
  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- * 
+ *
  */
 
 #ifndef WEBSOCKETPP_PROCESSOR_BASE_HPP
@@ -44,14 +44,14 @@ namespace processor {
 /// Constants related to processing WebSocket connections
 namespace constants {
 
-static const char upgrade_token[] = "websocket";
-static const char connection_token[] = "upgrade";
-static const char handshake_guid[] = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
+static char const upgrade_token[] = "websocket";
+static char const connection_token[] = "upgrade";
+static char const handshake_guid[] = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
 
 } // namespace constants
 
 
-// Processor class related error codes
+/// Processor class related error codes
 namespace error_cat {
 enum value {
     BAD_REQUEST = 0, // Error was the result of improperly formatted user input
@@ -62,35 +62,25 @@ enum value {
 };
 } // namespace error_cat
 
-
-
-
-
-
-
-
-
-/**
- * Generic Processor error codes usable by all processor types
- */
+/// Error code category and codes used by all processor types
 namespace error {
 enum processor_errors {
     /// Catch-all error for processor policy errors that don't fit in other
     /// categories
     general = 1,
-    
+
     /// Error was the result of improperly formatted user input
     bad_request,
-    
+
     /// Processor encountered a protocol violation in an incoming message
     protocol_violation,
-    
+
     /// Processor encountered a message that was too large
     message_too_big,
-    
+
     /// Processor encountered invalid payload data.
     invalid_payload,
-    
+
     /// The processor method was called with invalid arguments
     invalid_arguments,
 
@@ -102,7 +92,7 @@ enum processor_errors {
 
     /// Illegal use of reserved bit
     invalid_rsv_bit,
-    
+
     /// Fragmented control message
     fragmented_control,
 
@@ -124,15 +114,15 @@ enum processor_errors {
     /// Invalid UTF-8 encoding
     invalid_utf8,
 
-    /// Operation required not implimented functionality
-    not_implimented,
+    /// Operation required not implemented functionality
+    not_implemented,
 
     /// Invalid HTTP method
     invalid_http_method,
 
     /// Invalid HTTP version
     invalid_http_version,
-    
+
     /// Invalid HTTP status
     invalid_http_status,
 
@@ -164,14 +154,15 @@ enum processor_errors {
     extensions_disabled
 };
 
+/// Category for processor errors
 class processor_category : public lib::error_category {
 public:
     processor_category() {}
 
-    const char *name() const _WEBSOCKETPP_NOEXCEPT_TOKEN_ {
+    char const * name() const _WEBSOCKETPP_NOEXCEPT_TOKEN_ {
         return "websocketpp.processor";
     }
-    
+
     std::string message(int value) const {
         switch(value) {
             case error::general:
@@ -206,8 +197,8 @@ public:
                 return "64 bit frames are not supported on 32 bit systems";
             case error::invalid_utf8:
                 return "Invalid UTF8 encoding";
-            case error::not_implimented:
-                return "Operation required not implimented functionality";
+            case error::not_implemented:
+                return "Operation required not implemented functionality";
             case error::invalid_http_method:
                 return "Invalid HTTP method.";
             case error::invalid_http_version:
@@ -238,33 +229,35 @@ public:
     }
 };
 
-inline const lib::error_category& get_processor_category() {
+/// Get a reference to a static copy of the processor error category
+inline lib::error_category const & get_processor_category() {
     static processor_category instance;
     return instance;
 }
 
+/// Create an error code with the given value and the processor category
 inline lib::error_code make_error_code(error::processor_errors e) {
     return lib::error_code(static_cast<int>(e), get_processor_category());
 }
 
 /// Converts a processor error_code into a websocket close code
 /**
- * Looks up the appropriate WebSocket close code that should be sent after an 
+ * Looks up the appropriate WebSocket close code that should be sent after an
  * error of this sort occurred.
- * 
- * If the error is not in the processor category close::status::blank is 
+ *
+ * If the error is not in the processor category close::status::blank is
  * returned.
  *
  * If the error isn't normally associated with reasons to close a connection
- * (such as errors intended to be used interally or delivered to client 
- * applications, ex: invalid arguments) then 
+ * (such as errors intended to be used internally or delivered to client
+ * applications, ex: invalid arguments) then
  * close::status::internal_endpoint_error is returned.
  */
 inline close::status::value to_ws(lib::error_code ec) {
     if (ec.category() != get_processor_category()) {
         return close::status::blank;
     }
-    
+
     switch (ec.value()) {
         case error::protocol_violation:
         case error::control_too_big:
@@ -290,10 +283,11 @@ inline close::status::value to_ws(lib::error_code ec) {
 } // namespace error
 } // namespace processor
 } // namespace websocketpp
+
 _WEBSOCKETPP_ERROR_CODE_ENUM_NS_START_
 template<> struct is_error_code_enum<websocketpp::processor::error::processor_errors>
 {
-    static const bool value = true;
+    static bool const value = true;
 };
 _WEBSOCKETPP_ERROR_CODE_ENUM_NS_END_
 

@@ -83,7 +83,7 @@ void WebSocketServer::close(){
 void WebSocketServer::cancel()
 {
 	try {
-        mServer.cancel();
+		mServer.stop();
 	} catch ( const std::exception& ex ) {
 		mSignalError( ex.what() );
     } catch ( websocketpp::lib::error_code err ) {

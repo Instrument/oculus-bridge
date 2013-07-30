@@ -9,9 +9,9 @@
 //  the rendering stuff, plus some help from the example projects in the Oculus SDK)
 //
 
-
-#include "Oculus.h"
+#include "cinder/app/AppNative.h"
 #include "cinder/Utilities.h"
+#include "Oculus.h"
 
 using namespace ci;
 

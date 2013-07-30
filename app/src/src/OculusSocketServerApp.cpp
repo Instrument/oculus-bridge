@@ -51,9 +51,9 @@ void OculusSocketServerApp::prepareSettings( Settings *settings ){
 
 void OculusSocketServerApp::setup()
 {
-    mServerPort = 9000;
+    mServerPort = 9000; // default
     
-    string configPath = getAppPath().string() + "/../config.json";
+    string configPath = getAppPath().string() + "/config.json";
     
     if(fs::exists(configPath)) {
         JsonTree::ParseOptions options;
@@ -193,7 +193,8 @@ void OculusSocketServerApp::draw()
 
     if(mSocketConnected) {
         gl::drawSolidRect( Rectf(214, 30, 226, 42));
-    }    
+    }
+
     if(mOculusVR && mOculusVR->isConnected()) {
         gl::drawSolidRect( Rectf(214, 104, 226, 116));
     }
