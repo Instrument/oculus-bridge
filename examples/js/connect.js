@@ -48,7 +48,7 @@ function initGeometry(){
   scene.add(floor);
 
 
-  var material = new THREE.MeshLambertMaterial({ color: 0x8ef393, emissive:0x297d67});
+  var material = new THREE.MeshLambertMaterial({ color: 0x29d6e1, emissive:0x297d67});
   referenceCube = new THREE.Mesh( new THREE.CubeGeometry(90, 60, 50), material);
 
   scene.add(referenceCube);

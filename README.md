@@ -4,7 +4,11 @@ oculus-bridge
 
 A simple desktop app and javascript library to link the Oculus Rift with the web.
 
-__Important Bits:__ [Host App](https://github.com/Instrument/oculus-bridge/tree/master/app/build) | [JS library](https://github.com/Instrument/oculus-bridge/tree/master/web/build) | [Documentation](https://github.com/Instrument/oculus-bridge/tree/master/docs) 
+__Important Bits:__ 
+
+- Host App for [Windows](https://github.com/Instrument/oculus-bridge/blob/master/app/build/oculus-bridge-windows.zip?raw=true) or [Mac OSX](https://github.com/Instrument/oculus-bridge/blob/master/app/build/oculus-bridge-osx.zip?raw=true)
+- [JS library](https://github.com/Instrument/oculus-bridge/tree/master/web/build)
+- [Documentation](https://github.com/Instrument/oculus-bridge/tree/master/docs) 
 
 
 The goal of this project is to provide a flexible, modular way to access the tracking data and display configuration for the Oculus Rift for use with webGL or any other browser-based content.  This is not the first websocket based utility for the Oculus Rift, but the cross platform code base and modularity of the javascript has been built to support changes in the hardware and ease of integration on the javascript side.
@@ -14,7 +18,7 @@ The goal of this project is to provide a flexible, modular way to access the tra
 
 - An Oculus Rift
 - A browser that supports websockets
-- The [OculusBrige host application](https://github.com/Instrument/oculus-bridge/tree/master/app/build)
+- The OculusBrige host application - [Windows](https://github.com/Instrument/oculus-bridge/blob/master/app/build/oculus-bridge-windows.zip?raw=true) or [Mac OSX](https://github.com/Instrument/oculus-bridge/blob/master/app/build/oculus-bridge-osx.zip?raw=true)
 
 
 ## Basic Usage
