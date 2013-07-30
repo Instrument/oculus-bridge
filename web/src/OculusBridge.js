@@ -1,13 +1,13 @@
 var OculusBridge = function(config) {
 
-	// Websocket
+	// ye olde websocket
 	var socket;
 
 	var retryOnDisconnect 	= true;
-	var websocketAddress 	= config.hasOwnProperty("address") ? config["address"] : "localhost";
-	var websocketPort 		= config.hasOwnProperty("port") ? config["port"] : 9000;
-	var retryInterval 		= config.hasOwnProperty("retryInterval") ? config["retryInterval"] : 1;
-	var debugEnabled		= config.hasOwnProperty("debug") ? config["debug"] : false;
+	var websocketAddress 	= config.hasOwnProperty("address") 			? config["address"] 		: "localhost";
+	var websocketPort 		= config.hasOwnProperty("port") 			? config["port"] 			: 9000;
+	var retryInterval 		= config.hasOwnProperty("retryInterval") 	? config["retryInterval"] 	: 1;
+	var debugEnabled		= config.hasOwnProperty("debug") 			? config["debug"] 			: false;
 
 	// Quaternion values
 	var quaternionValues = { 
@@ -17,7 +17,7 @@ var OculusBridge = function(config) {
 		w : 0 
 	};
 
-	// Defaults
+	// Display metrics, set to defaults from the dev kit hardware
 	var displayMetrics = {
 		FOV 					: 125.871,
 
@@ -51,7 +51,6 @@ var OculusBridge = function(config) {
 			callbacks[cb] = config[cb];
 		}
 	}
-
 
 	var updateOrientation = function(data) {
 
@@ -180,10 +179,10 @@ var OculusBridge = function(config) {
 	}
 
 	return {
-		"isConnected" : isConnected,
-		"disconnect" : disconnect,
-		"connect" : connect,
-		"getOrientation" : getOrientation,
-		"getConfiguration" : getConfiguration
+		"isConnected" 		: isConnected,
+		"disconnect" 		: disconnect,
+		"connect" 			: connect,
+		"getOrientation" 	: getOrientation,
+		"getConfiguration" 	: getConfiguration
 	}
 };

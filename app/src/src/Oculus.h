@@ -24,6 +24,8 @@ public:
     static OculusRef create();
     ~Oculus();
     
+    void        destroy();
+    
     float       getIPD() const;
     float       getFov();
     float       getEyeToScreenDistance() const;

@@ -4,7 +4,9 @@
 *.perspective
 *.perspectivev3
 
+app/src/xcode/build/*
 *.xcodeproj/xcuserdata/*.xcuserdatad
 *.xcodeproj/project.xcworkspace/xcuserdata/*.xcuserdatad
+xcuserdata
 
 web/node_modules/*

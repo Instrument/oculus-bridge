@@ -29,6 +29,11 @@ OculusRef Oculus::create(bool autoCalibrate)
 
 Oculus::~Oculus()
 {
+    destroy();
+}
+
+
+void Oculus::destroy(){
     RemoveHandlerFromDevices();
     
     // if thread is running wait for it to end
@@ -40,9 +45,15 @@ Oculus::~Oculus()
     }
     
     // Clean up
-    mSensorDevice.Clear();
-    mHMD.Clear();
-    mManager.Clear();
+    if(mSensorDevice){
+        mSensorDevice.Clear();
+    }
+    if(mHMD){
+        mHMD.Clear();
+    }
+    if(mManager){
+        mManager.Clear();
+    }
 }
 
 Oculus::Oculus(bool autoCalibrate)

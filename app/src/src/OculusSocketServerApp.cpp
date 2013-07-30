@@ -18,8 +18,8 @@ using namespace std;
 
 class OculusSocketServerApp : public AppNative {
   public:
-    
 	void                setup();
+    void                shutdown();
 	void                update();
 	void                draw();
     void                prepareSettings( Settings *settings );
@@ -87,6 +87,19 @@ void OculusSocketServerApp::setup()
     mOculusVR = Oculus::create();
     
     mBackgroundTexture = gl::Texture( loadImage( loadResource( RES_BACKGROUND_TEX ) ) );
+}
+
+void OculusSocketServerApp::shutdown(){
+    if(mSocketConnected){
+        console() << "Closing socket connection." << std::endl;
+        mServer.close();
+    }
+    
+    if(mOculusVR){
+        console() << "Disposing of Oculus." << std::endl;
+        mOculusVR->destroy();
+    }
+    console() << "Done with shutdown()" << std::endl;
 }
 
 void OculusSocketServerApp::onConnect(){
