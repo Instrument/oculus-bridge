@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>OculusBridge - VR Scene</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Strait' rel='stylesheet' type='text/css'>
+    <link href='css/style.css' rel='stylesheet' type='text/css'>
+    <style>
+      
+      #info{
+        padding:10px;
+        color:#fff;
+        position:absolute;
+        background-color:rgba(0,0,0,0.4);
+      }
+
+      #help-text H1 {
+        font-size:18px;
+        margin-top:15px;
+
+      }
+      
+      #help-text DIV{
+        margin-bottom:5px;
+      }
+
+      #help-text DIV LABEL{
+        display:inline-block;
+        width:160px;
+      }
+
+      #help-text SECTION {
+        margin-top:20px;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+    <a id="logo" href="https://github.com/Instrument/oculus-bridge"></a>
+    <div id="info">
+      <div class="button" id="toggle-render">toggle render mode</div> <div class="button" id="help">help</div>
+      <div id="help-text" style="display:none;">
+        <h1>Controls - stereo mode:</h1>
+        <section>
+          <div><label>forward:</label>W or UP</div>
+          <div><label>backward:</label>S or DOWN</div>
+        </section>
+
+        <section>
+          <div><label>straif left:</label>A or LEFT</div>
+          <div><label>straif right:</label>D or RIGHT</div>
+        </section>
+
+        <section>
+          <div><label>turn left:</label>Q</div>
+          <div><label>turn right:</label>E</div>
+        </section>
+
+        <section>
+          <div><label>jump:</label>SPACE</div>
+        </section>
+
+        <h1>Controls - perspective mode:</h1>
+        <section>
+          <div><label>orbit:</label>left-click + drag</div>
+          <div><label>pan:</label>right-click + drag</div>
+          <div><label>zoom:</label>mouse wheel</div>
+        </section>
+      </div>
+    </div>
+
+    <div id="viewport"></div>
+    
+    <script src="lib/OculusBridge.min.js"></script>
+
+    <script src="lib/three.min.r59.js"></script>
+    <script src="lib/OrbitControls.js"></script>
+    <script src="lib/RiftCamera.js"></script>
+
+    <script src="js/first_person.js"></script>
+  </body>
+</html>

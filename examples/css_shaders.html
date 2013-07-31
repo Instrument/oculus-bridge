@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+body{
+	padding:0px;
+	margin:0px;
+
+	font-family:sans-serif;
+	font-size:20px;
+}
+
+#left_eye {
+	position:absolute;
+	top:0px;
+	left:0px;
+   
+    width:50%;
+    height:100%;
+    
+    background:#900000;
+    background-image:url(img/grid.jpg);
+    background-size: 200%, 200%;
+    background-position:center center;
+    background-repeat:no-repeat;
+}
+
+#right_eye {
+	position:absolute;
+	top:0px;
+	left:50%;
+    
+    width:50%;
+    height:100%;
+    background:#900000;
+    background-image:url(img/grid.jpg);
+    background-size:200%, 200%;
+    background-position:center center;
+    background-repeat:no-repeat;
+}
+
+.oculus_left {
+	 -webkit-filter: custom( 
+    	url(css/distort.vs) 
+        mix(url(css/passthrough.fs) normal source-atop),
+        50 50, lensShift -0.15197649572649574);
+}
+.oculus_right {
+	-webkit-filter: custom( 
+    	url(css/distort.vs) 
+        mix(url(css/passthrough.fs) normal source-atop),
+        50 50, lensShift 0.15197649572649574);
+}
+
+.centered{
+	margin-top:40%;
+	margin-right:25%;
+	margin-left:25%;
+	overflow:auto;
+	width:50%;
+	height:30%;
+}
+
+</style>
+
+</head>
+<body>
+
+	<div id="left_eye" class="oculus_left">
+		<div class="centered" id="content_left">
+			Click anywhere to enable/disable CSS shader.<br><br>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dapibus interdum sapien, et vestibulum orci rutrum vitae. Donec nulla nulla, condimentum eget diam sed, egestas pulvinar massa. In tellus ante, eleifend in ante sit amet, bibendum faucibus lacus. Nunc vel feugiat mauris. In hendrerit rutrum ante, non rhoncus mi luctus nec. Pellentesque risus mi, luctus in urna non, molestie pulvinar metus. Proin condimentum augue at nisi elementum tempor nec vitae ante. Praesent odio odio, hendrerit a magna sit amet, adipiscing semper tortor. Ut mollis eu ligula ut convallis. In et felis a nunc eleifend convallis blandit nec nulla. Quisque semper dolor nec ligula posuere, molestie ultricies orci ultrices. Phasellus et leo a leo malesuada auctor a condimentum ante.
+		</div>
+	</div>
+
+	<div id="right_eye"  class="oculus_right">
+		<div class="centered" id="content_right">
+			Click anywhere to enable/disable CSS shader.<br><br>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dapibus interdum sapien, et vestibulum orci rutrum vitae. Donec nulla nulla, condimentum eget diam sed, egestas pulvinar massa. In tellus ante, eleifend in ante sit amet, bibendum faucibus lacus. Nunc vel feugiat mauris. In hendrerit rutrum ante, non rhoncus mi luctus nec. Pellentesque risus mi, luctus in urna non, molestie pulvinar metus. Proin condimentum augue at nisi elementum tempor nec vitae ante. Praesent odio odio, hendrerit a magna sit amet, adipiscing semper tortor. Ut mollis eu ligula ut convallis. In et felis a nunc eleifend convallis blandit nec nulla. Quisque semper dolor nec ligula posuere, molestie ultricies orci ultrices. Phasellus et leo a leo malesuada auctor a condimentum ante.
+		</div>
+	</div>
+	<script src="lib/OculusBridge.min.js"></script>
+	<script>
+	
+	var oculusBridge;
+	var filtered = true;
+	var ignoreScroll = false;
+
+	document.body.onload = init;
+
+	function bridgeConfigUpdated( config ){
+		// TODO: hand off config values to CSS shader.
+	}
+
+	function bridgeOrientationUpdated(quatValues) {
+		// TODO: Do something interesting with the view direction..		
+	}
+
+	function init(){
+		oculusBridge = OculusBridge({
+			onOrientationUpdate : bridgeOrientationUpdated,
+			onConfigUpdate      : bridgeConfigUpdated,
+		});
+
+		oculusBridge.connect();
+
+		document.body.onclick = function() {
+			if(filtered){
+				document.getElementById("left_eye").className = "";
+				document.getElementById("right_eye").className = "";
+			}else {
+				document.getElementById("left_eye").className = "oculus_left";
+				document.getElementById("right_eye").className = "oculus_right";
+			}
+			filtered = !filtered;
+		}
+
+
+		// Silly mechanism to link scroll position of two elements..
+
+		document.getElementById("content_left").onscroll = function() {
+			if(!ignoreScroll){
+				ignoreScroll = true;
+				document.getElementById("content_right").scrollTop = document.getElementById("content_left").scrollTop;
+				ignoreScroll = false;
+			}
+		}
+		document.getElementById("content_right").onscroll = function(){
+			if(!ignoreScroll){
+				ignoreScroll = true;
+				document.getElementById("content_left").scrollTop = document.getElementById("content_right").scrollTop;
+				ignoreScroll = false;
+			}
+		}
+	}
+	</script>
+</body>
+</html>
