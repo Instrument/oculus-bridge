@@ -180,7 +180,9 @@ function init(){
   oculusBridge = new OculusBridge({
     "debug" : true,
     "onOrientationUpdate" : bridgeOrientationUpdated,
-    "onConfigUpdate"      : bridgeConfigUpdated
+    "onConfigUpdate"      : bridgeConfigUpdated,
+    "onConnect"           : bridgeConnected,
+    "onDisconnect"        : bridgeDisconnected
   });
   oculusBridge.connect();
 
@@ -202,6 +204,14 @@ function onResize() {
   }
 }
 
+
+function bridgeConnected(){
+  document.getElementById("logo").className = "";
+}
+
+function bridgeDisconnected(){
+  document.getElementById("logo").className = "offline";
+}
 
 function bridgeConfigUpdated(config){
   console.log("Oculus config updated.");
