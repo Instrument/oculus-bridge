@@ -93,11 +93,13 @@ function bridgeOrientationUpdated(quat) {
 function bridgeConnected(){
   var stats = document.getElementById("stats");
   stats.innerHTML = "Bridge Connected!";
+  document.getElementById("logo").className = "";
 }
 
 function bridgeDisconnected(){
   var stats = document.getElementById("stats");
   stats.innerHTML = "Bridge Disconnected.";
+  document.getElementById("logo").className = "offline"
 }
 
 
