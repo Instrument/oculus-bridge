@@ -71,9 +71,17 @@ function bridgeConfigUpdated(config){
   
   stats.innerHTML = "Display Configuration<hr>";
 
+  // Show all the parameters in the config object.
   for(var itm in config){
     var row = document.createElement("div");
-    row.innerHTML = itm + ": " + config[itm];
+    var label = document.createElement("label");
+    var value = document.createElement("span");
+
+    label.innerHTML = itm;
+    value.innerHTML = config[itm];
+    
+    row.appendChild(label);
+    row.appendChild(value);
     stats.appendChild(row);
   }
 }
@@ -84,12 +92,12 @@ function bridgeOrientationUpdated(quat) {
 
 function bridgeConnected(){
   var stats = document.getElementById("stats");
-  stats.innerHTML = "Connected!";
+  stats.innerHTML = "Bridge Connected!";
 }
 
 function bridgeDisconnected(){
   var stats = document.getElementById("stats");
-  stats.innerHTML = "Disconnected.";
+  stats.innerHTML = "Bridge Disconnected.";
 }
 
 

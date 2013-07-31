@@ -107,14 +107,14 @@ function initGeometry(){
   }
 
   var coreTexture = new THREE.ImageUtils.loadTexture( "textures/purple_blue.jpg" );
-  for(var i = 0; i < 100; i++){
+  for(var i = 0; i < 50; i++){
     var material = new THREE.MeshLambertMaterial({ emissive:0x505050, map: coreTexture, color: 0xffffff});
     
     var height = Math.random() * 100+30;
     
     var box = new THREE.Mesh( new THREE.CubeGeometry(height, height, height), material);
 
-    box.position.set(Math.random() * 1000 - 500, Math.random() * 200 - 300 ,Math.random() * 1000 - 500);
+    box.position.set(Math.random() * 1000 - 500, Math.random() * 150 - 300 ,Math.random() * 1000 - 500);
     box.rotation.set(Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2);
     
     core.push(box);
@@ -122,18 +122,26 @@ function initGeometry(){
   }
 
   for(var i = 0; i < 100; i++){
-    var material = new THREE.MeshLambertMaterial({ emissive:0x505050, color: 0x00FF00});
+    var material = new THREE.MeshLambertMaterial({ emissive:0x008000, color: 0x00FF00});
     
-    var size = Math.random() * 10+1;
+    var size = Math.random() * 15+3;
     
-    var box = new THREE.Mesh( new THREE.CubeGeometry(size, size, size), material);
+    var box = new THREE.Mesh( new THREE.CubeGeometry(size, size*0.1, size*0.1), material);
 
     box.position.set(Math.random() * 1000 - 500, Math.random() * 100 + 100 ,Math.random() * 1000 - 500);
     //box.rotation.set(Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2);
     
+    var speedVector;
+    if(Math.random() > 0.5){
+      speedVector = new THREE.Vector3(0, 0, Math.random() * 1.5 + 0.5);
+      box.rotation.y = Math.PI / 2;
+    } else {
+      speedVector = new THREE.Vector3(Math.random() * 1.5 + 0.5, 0, 0);
+    }
+
     dataPackets.push({
       obj: box,
-      speed: Math.random() > 0.5 ? new THREE.Vector3(0, 0, Math.random() * 0.5 + 0.5) : new THREE.Vector3(Math.random() * 0.5 + 0.5, 0, 0)
+      speed: speedVector
     });
     scene.add(box);
   }
