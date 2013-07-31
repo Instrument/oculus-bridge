@@ -2,7 +2,7 @@ oculus-bridge
 =============
 
 
-A simple desktop app and javascript library to link the Oculus Rift with the web.
+A simple desktop app and javaScript library to link the Oculus Rift with the web.
 
 __Important Bits:__ 
 
@@ -11,7 +11,7 @@ __Important Bits:__
 - [Documentation](https://github.com/Instrument/oculus-bridge/tree/master/docs) 
 
 
-The goal of this project is to provide a flexible, simple way to access the tracking data and display configuration for the Oculus Rift for use with webGL or any other browser-based content.  This is not the first websocket based utility for the Oculus Rift, but the cross platform code base and modularity of the javascript has been built to support changes in the hardware and ease of integration on the javascript side.
+The goal of this project is to provide a flexible, simple way to access the tracking data and display configuration for the Oculus Rift for use with webGL or any other browser-based content.  This is not the first websocket based utility for the Oculus Rift, but the cross platform code base and modularity of the JavaScript has been built to support changes in the hardware and ease of integration on the JavaScript side.
 
 
 ## Requirements
@@ -30,14 +30,14 @@ The goal of this project is to provide a flexible, simple way to access the trac
 	- [CSS Shader Example](http://instrument.github.io/oculus-bridge/examples/css_shaders.html)
 - Plug in your Oculus Rift (you probably already did this already..)
 
-The order in which these things occur isn't important.  The app and javascript are built to handle loosing connectivity, having the hardware connected and disconnected randomly at runtime, etc.
+The order in which these things occur isn't important.  The app and JavaScript are built to handle loosing connectivity, having the hardware connected and disconnected randomly at runtime, etc.
 
 
 ## Browser/Platform Support
 
-##### Javascript library
+##### JavaScript library
 
-The javascript library has been tested with the following browsers:
+The JavaScript library has been tested with the following browsers:
 
 - Chrome 28
 - Safari 6
