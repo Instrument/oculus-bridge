@@ -6,7 +6,7 @@ A simple desktop app and javascript library to link the Oculus Rift with the web
 
 __Important Bits:__ 
 
-- Host App for [Windows](https://github.com/Instrument/oculus-bridge/blob/master/app/build/oculus-bridge-windows.zip?raw=true) or [Mac OSX](https://github.com/Instrument/oculus-bridge/blob/master/app/build/oculus-bridge-osx.zip?raw=true)
+- Host App: [Windows](https://github.com/Instrument/oculus-bridge/blob/master/app/build/oculus-bridge-windows.zip?raw=true) | [Mac OSX](https://github.com/Instrument/oculus-bridge/blob/master/app/build/oculus-bridge-osx.zip?raw=true)
 - [JS library](https://github.com/Instrument/oculus-bridge/tree/master/web/build)
 - [Documentation](https://github.com/Instrument/oculus-bridge/tree/master/docs) 
 
@@ -18,13 +18,16 @@ The goal of this project is to provide a flexible, simple way to access the trac
 
 - An Oculus Rift
 - A browser that supports websockets
-- The OculusBrige host application - [Windows](https://github.com/Instrument/oculus-bridge/blob/master/app/build/oculus-bridge-windows.zip?raw=true) or [Mac OSX](https://github.com/Instrument/oculus-bridge/blob/master/app/build/oculus-bridge-osx.zip?raw=true)
+- The OculusBrige host application : [Windows](https://github.com/Instrument/oculus-bridge/blob/master/app/build/oculus-bridge-windows.zip?raw=true) | [Mac OSX](https://github.com/Instrument/oculus-bridge/blob/master/app/build/oculus-bridge-osx.zip?raw=true)
 
 
 ## Basic Usage
 
-- Download and launch the [OculusBrige host application](https://github.com/Instrument/oculus-bridge/tree/master/app/build)
-- Open a web page that makes use of the [OculusBridge javascript library](https://github.com/Instrument/oculus-bridge/tree/master/web/build)
+- Download and launch the OculusBrige host application
+- Open one of the example pages:
+	- [Basic Connection Test](http://instrument.github.io/oculus-bridge/examples/connect.html)
+	- [First Person Example](http://instrument.github.io/oculus-bridge/examples/first_person.html)
+	- [CSS Shader Example](http://instrument.github.io/oculus-bridge/examples/css_shaders.html)
 - Plug in your Oculus Rift (you probably already did this already..)
 
 The order in which these things occur isn't important.  The app and javascript are built to handle loosing connectivity, having the hardware connected and disconnected randomly at runtime, etc.
@@ -40,6 +43,9 @@ The javascript library has been tested with the following browsers:
 - Safari 6
 - Firefox 22
 
+Example content is currently using THREE.js r59
+
+
 ##### OculusBridge Application
 
 The bridge application has been compiled for MacOS Mountain Lion and Windows 7.
@@ -47,10 +53,7 @@ The bridge application has been compiled for MacOS Mountain Lion and Windows 7.
 
 ## Using the JavaScript Library
 
-To add Oculus Rift support to your web project, download and include [OculusBridge.min.js](https://github.com/Instrument/oculus-bridge/tree/master/web/build) in your HTML.  The bridge is purely a way to access data from the rift hardware and does not make any assumptions about the renderer.  It is especially easy to use the bridge with THREE.js but there is no specific dependancy on THREE.js at this time.
-
-More extensive [examples](https://github.com/Instrument/oculus-bridge/tree/master/examples) and [documentation](https://github.com/Instrument/oculus-bridge/tree/master/docs) can be found in this repo, but here's a quick bit of javascript that illustrates how to connect to the bridge, and match the rotation of an object with the head tracking data.
-
+To add Oculus Rift support to your web project, download and include [OculusBridge.min.js](https://github.com/Instrument/oculus-bridge/tree/master/web/build) in your HTML.  The bridge is purely a way to access data from the rift hardware and does not make any assumptions about the renderer.  It is especially easy to use the bridge with THREE.js but there is no specific dependancy on THREE.js at this time.  Check out the documentation and example code for more detailed explaination.
 
 	// rotate a THREE.js object based on the orientation of the Oculus Rift
 
@@ -62,6 +65,12 @@ More extensive [examples](https://github.com/Instrument/oculus-bridge/tree/maste
 
 	bridge.connect();
 
+
+## Documentation
+
+- [OculusBridge JavaScript](https://github.com/Instrument/oculus-bridge/blob/master/docs/javascript_docs.md)
+- [Implementing typical FPS movement](https://github.com/Instrument/oculus-bridge/blob/master/docs/first_person_movement.md)
+- [Building the host app](https://github.com/Instrument/oculus-bridge/blob/master/docs/build_instructions.md)
 
 ## Credits
 
