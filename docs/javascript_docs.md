@@ -33,7 +33,7 @@ The OculusBridge object accepts a single configuration object that may contain a
 		"onDisconnect" : function() {
 			console.log("good bye Oculus.");
 		},
-		"onConfigurationUpdate" : function(config) {
+		"onConfigUpdate" : function(config) {
 			console.log("Field of view: " + config.FOV);
 		},
 		"onOrientationUpdate" : function(quatValues){
