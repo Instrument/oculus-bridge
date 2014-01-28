@@ -25,8 +25,6 @@ var viewAngle;
 var velocity;
 var oculusBridge;
 
-
-
 // Map for key states
 var keys = [];
 for(var i = 0; i < 130; i++){
@@ -366,18 +364,43 @@ function animate() {
     }
   }
 
-  requestAnimationFrame(animate);
-  render();
+  
+  if(render()){
+    requestAnimationFrame(animate);  
+  }
 }
 
+function crashSecurity(e){
+  oculusBridge.disconnect();
+  document.getElementById("viewport").style.display = "none";
+  document.getElementById("security_error").style.display = "block";
+}
+
+function crashOther(e){
+  oculusBridge.disconnect();
+  document.getElementById("viewport").style.display = "none";
+  document.getElementById("generic_error").style.display = "block";
+  document.getElementById("exception_message").innerHTML = e.message;
+}
 
 function render() { 
-  if(useRift){
-    riftCam.render(scene, camera);
-  }else{
-    controls.update();
-    renderer.render(scene, camera);
+  try{
+    if(useRift){
+      riftCam.render(scene, camera);
+    }else{
+      controls.update();
+      renderer.render(scene, camera);
+    }  
+  } catch(e){
+    console.log(e);
+    if(e.name == "SecurityError"){
+      crashSecurity(e);
+    } else {
+      crashOther(e);
+    }
+    return false;
   }
+  return true;
 }
 
 
