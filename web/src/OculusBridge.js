@@ -3,6 +3,7 @@ var OculusBridge = function(config) {
 	// ye olde websocket
 	var socket;
 
+	var reconnectTimeout 	= null;
 	var retryOnDisconnect 	= true;
 	var websocketAddress 	= config.hasOwnProperty("address") 			? config["address"] 		: "localhost";
 	var websocketPort 		= config.hasOwnProperty("port") 			? config["port"] 			: 9005;
@@ -146,7 +147,7 @@ var OculusBridge = function(config) {
 
 			if(retryOnDisconnect){
 				debug("Connection failed, retrying in 1 second...");
-				window.setTimeout( reconnect, retryInterval * 1000 );
+				reconnectTimeout = window.setTimeout( reconnect, retryInterval * 1000 );
 			}
 		}
 	}
@@ -163,6 +164,7 @@ var OculusBridge = function(config) {
 
 	var disconnect = function(){
 		retryOnDisconnect = false;
+		window.clearTimeout(reconnectTimeout);
 		socket.close();
 	}
 
