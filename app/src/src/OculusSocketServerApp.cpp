@@ -169,9 +169,11 @@ void OculusSocketServerApp::update()
 
         acceleration = mOculusVR->getAcceleration();
 
-        boost::format fmta("{ \"m\" : \"acceleration\", \"a\" : %f }");
+        boost::format fmta("{ \"m\" : \"acceleration\", \"a\" : [%f,%f,%f] }");
 
-        fmta % acceleration;
+        fmta % acceleration.x;
+        fmta % acceleration.y;
+        fmta % acceleration.z;
 
         mServer.write(fmta.str());
     }
