@@ -18,6 +18,13 @@ var OculusBridge = function(config) {
 		w : 0 
 	};
 
+	// Accelerometer readings
+	var accelerationValues = {
+		x : 0,
+		y : 0,
+		z : 0
+	};
+
 	// Display metrics, set to defaults from the dev kit hardware
 	var displayMetrics = {
 		FOV 					: 125.871,
@@ -41,6 +48,7 @@ var OculusBridge = function(config) {
 	// Callback handlers.
 	var callbacks = {
 		onOrientationUpdate : null,
+		onAccelerationUpdate: null,
 		onConfigUpdate : null,
 		onConnect : null,
 		onDisconnect : null
@@ -64,6 +72,20 @@ var OculusBridge = function(config) {
 
 			if(callbacks["onOrientationUpdate"]) {
 				callbacks["onOrientationUpdate"](quaternionValues);
+			}
+		}
+	}
+
+	var updateAcceleration = function(data) {
+
+		if(data["a"] && (data["a"].length == 3)) {
+			
+			accelerationValues.x = Number(data["a"][0]);
+			accelerationValues.y = Number(data["a"][1]);
+			accelerationValues.z = Number(data["a"][2]);
+
+			if(callbacks["onAccelerationUpdate"]) {
+				callbacks["onAccelerationUpdate"](accelerationValues);
 			}
 		}
 	}
@@ -132,6 +154,10 @@ var OculusBridge = function(config) {
 					updateOrientation(data);
 				break;
 
+				case "acceleration":
+					updateAcceleration(data);
+				break;
+
 				default:
 					debug("Unknown message received from server: " + msg.data);
 					disconnect();
@@ -174,6 +200,10 @@ var OculusBridge = function(config) {
 
 	var getOrientation = function(){
 		return quaternionValues;
+	}
+
+	var getAcceleration = function(){
+		return accelerationValues;
 	}
 
 	var isConnected = function(){

@@ -20,7 +20,6 @@ class Oculus : public MessageHandler
 {
 public:
     // ! Returns an empty ptr if we can't initialize correctly the HMD device
-    static OculusRef create(bool autoCalibrate);
     static OculusRef create();
     ~Oculus();
     
@@ -33,6 +32,7 @@ public:
     float       getDistortionScale();
     ci::Vec4f   getDistortionParams() const;
     ci::Quatf   getOrientation();
+    ci::Vec3f   getAcceleration();
     float       getLensSeparationDistance();
     ci::Vec2f   getScreenSize();
     ci::Vec2f   getScreenResolution();
@@ -43,23 +43,16 @@ public:
     bool        isConnected() { return mHMD && mSensorDevice && !mHMD->IsDisconnected(); };
     
 protected:
-    Oculus( bool autoCalibrate = true );
-    
-    void updateAutoCalibration();
-    
+    Oculus();
+        
     OVR::Ptr<OVR::DeviceManager>    mManager;
     OVR::Ptr<OVR::HMDDevice>        mHMD;
     OVR::HMDInfo                    mHMDInfo;
-    OVR::SensorFusion               mSensorFusion;
+    OVR::SensorFusion*              mSensorFusion;
     OVR::Ptr<OVR::SensorDevice>     mSensorDevice;
-    OVR::Util::MagCalibration       mMagCalibration;
     OVR::Util::Render::StereoConfig mStereoConfig;
 
-    bool                            mAutoCalibrationEnabled;
-    bool                            mIsAutoCalibrating;
     bool                            mIsConnected;
-    
-    std::thread                     mAutoCalibrationThread;
 
     struct DeviceStatusNotificationDesc
     {

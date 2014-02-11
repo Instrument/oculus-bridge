@@ -17,11 +17,6 @@ using namespace ci;
 
 OculusRef Oculus::create()
 {
-    return create(true);
-}
-
-OculusRef Oculus::create(bool autoCalibrate)
-{
     OculusRef newDevice( new Oculus() );
     return newDevice;
 }
@@ -35,15 +30,7 @@ Oculus::~Oculus()
 
 void Oculus::destroy(){
     RemoveHandlerFromDevices();
-    
-    // if thread is running wait for it to end
-    if(mIsAutoCalibrating){
-        mIsAutoCalibrating = false;
-        if(mAutoCalibrationThread.joinable()){
-            mAutoCalibrationThread.join();
-        }
-    }
-    
+
     // Clean up
     if(mSensorDevice){
         mSensorDevice.Clear();
@@ -56,9 +43,8 @@ void Oculus::destroy(){
     }
 }
 
-Oculus::Oculus(bool autoCalibrate)
+Oculus::Oculus()
 {
-    mIsAutoCalibrating = false;
     mIsConnected = false;
     
     // Init OVR
@@ -85,15 +71,8 @@ Oculus::Oculus(bool autoCalibrate)
         mSensorDevice = *mHMD->GetSensor();
         
         if (mSensorDevice){
-            mSensorFusion.AttachToSensor(mSensorDevice);
-            
-            if( autoCalibrate ){
-                mIsAutoCalibrating = true;
-                mMagCalibration.BeginAutoCalibration( mSensorFusion );
-                mAutoCalibrationThread = std::thread( &Oculus::updateAutoCalibration, this );
-            } else {
-                mIsAutoCalibrating = false;
-            }
+            mSensorFusion = new SensorFusion();
+            mSensorFusion->AttachToSensor(mSensorDevice);
         } else {
             app::console() << "No Sensor found.\n";
         }
@@ -136,7 +115,12 @@ Vec4f Oculus::getDistortionParams() const
 
 ci::Quatf Oculus::getOrientation()
 {
-    return ci::Quatf( mSensorFusion.GetOrientation().w, mSensorFusion.GetOrientation().x, mSensorFusion.GetOrientation().y, mSensorFusion.GetOrientation().z );
+    return ci::Quatf( mSensorFusion->GetOrientation().w, mSensorFusion->GetOrientation().x, mSensorFusion->GetOrientation().y, mSensorFusion->GetOrientation().z );
+}
+
+Vec3f Oculus::getAcceleration()
+{
+    return Vec3f( mSensorFusion->GetAcceleration().x, mSensorFusion->GetAcceleration().y, mSensorFusion->GetAcceleration().z );
 }
 
 float Oculus::getLensSeparationDistance() {
@@ -149,26 +133,6 @@ Vec2f Oculus::getScreenSize(){
 
 Vec2f Oculus::getScreenResolution(){
     return Vec2f( mHMDInfo.HResolution, mHMDInfo.VResolution);
-}
-
-void Oculus::updateAutoCalibration()
-{
-    while ( mIsAutoCalibrating )
-    {
-        mMagCalibration.UpdateAutoCalibration( mSensorFusion );
-        
-        if ( mMagCalibration.IsCalibrated() )
-        {
-            app::console() << "Autocalibration complete!" << std::endl;
-            mSensorFusion.SetYawCorrectionEnabled(true);
-            mIsAutoCalibrating = false;
-        }
-        else if( !mMagCalibration.IsAutoCalibrating() ){
-            mIsAutoCalibrating = false;
-        }
-        
-        ci::sleep( 1 );
-    }
 }
 
 
@@ -246,7 +210,7 @@ void Oculus::handleMessages() {
                         if (!mSensorDevice)
                         {
                             mSensorDevice = *desc.Handle.CreateDeviceTyped<SensorDevice>();
-                            mSensorFusion.AttachToSensor(mSensorDevice);
+                            mSensorFusion->AttachToSensor(mSensorDevice);
                             mIsConnected = true;
                         }
                         else if (!wasAlreadyCreated)
@@ -280,7 +244,7 @@ void Oculus::handleMessages() {
         {
             if (desc.Handle.IsDevice(mSensorDevice))
             {
-                mSensorFusion.AttachToSensor(NULL);
+                mSensorFusion->AttachToSensor(NULL);
                 mSensorDevice.Clear();
                 mIsConnected = false;
             }
