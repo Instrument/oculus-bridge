@@ -20,7 +20,6 @@ class Oculus : public MessageHandler
 {
 public:
     // ! Returns an empty ptr if we can't initialize correctly the HMD device
-    static OculusRef create(bool autoCalibrate);
     static OculusRef create();
     ~Oculus();
     
@@ -43,14 +42,12 @@ public:
     bool        isConnected() { return mHMD && mSensorDevice && !mHMD->IsDisconnected(); };
     
 protected:
-    Oculus( bool autoCalibrate = true );
-    
-    void updateAutoCalibration();
-    
+    Oculus();
+        
     OVR::Ptr<OVR::DeviceManager>    mManager;
     OVR::Ptr<OVR::HMDDevice>        mHMD;
     OVR::HMDInfo                    mHMDInfo;
-    OVR::SensorFusion               mSensorFusion;
+    OVR::SensorFusion*              mSensorFusion;
     OVR::Ptr<OVR::SensorDevice>     mSensorDevice;
     OVR::Util::Render::StereoConfig mStereoConfig;
 

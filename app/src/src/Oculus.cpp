@@ -17,11 +17,6 @@ using namespace ci;
 
 OculusRef Oculus::create()
 {
-    return create(true);
-}
-
-OculusRef Oculus::create(bool autoCalibrate)
-{
     OculusRef newDevice( new Oculus() );
     return newDevice;
 }
@@ -48,7 +43,7 @@ void Oculus::destroy(){
     }
 }
 
-Oculus::Oculus(bool autoCalibrate)
+Oculus::Oculus()
 {
     mIsConnected = false;
     
@@ -76,7 +71,8 @@ Oculus::Oculus(bool autoCalibrate)
         mSensorDevice = *mHMD->GetSensor();
         
         if (mSensorDevice){
-            mSensorFusion.AttachToSensor(mSensorDevice);
+            mSensorFusion = new SensorFusion();
+            mSensorFusion->AttachToSensor(mSensorDevice);
         } else {
             app::console() << "No Sensor found.\n";
         }
@@ -119,7 +115,7 @@ Vec4f Oculus::getDistortionParams() const
 
 ci::Quatf Oculus::getOrientation()
 {
-    return ci::Quatf( mSensorFusion.GetOrientation().w, mSensorFusion.GetOrientation().x, mSensorFusion.GetOrientation().y, mSensorFusion.GetOrientation().z );
+    return ci::Quatf( mSensorFusion->GetOrientation().w, mSensorFusion->GetOrientation().x, mSensorFusion->GetOrientation().y, mSensorFusion->GetOrientation().z );
 }
 
 float Oculus::getLensSeparationDistance() {
@@ -209,7 +205,7 @@ void Oculus::handleMessages() {
                         if (!mSensorDevice)
                         {
                             mSensorDevice = *desc.Handle.CreateDeviceTyped<SensorDevice>();
-                            mSensorFusion.AttachToSensor(mSensorDevice);
+                            mSensorFusion->AttachToSensor(mSensorDevice);
                             mIsConnected = true;
                         }
                         else if (!wasAlreadyCreated)
@@ -243,7 +239,7 @@ void Oculus::handleMessages() {
         {
             if (desc.Handle.IsDevice(mSensorDevice))
             {
-                mSensorFusion.AttachToSensor(NULL);
+                mSensorFusion->AttachToSensor(NULL);
                 mSensorDevice.Clear();
                 mIsConnected = false;
             }
