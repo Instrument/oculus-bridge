@@ -35,15 +35,7 @@ Oculus::~Oculus()
 
 void Oculus::destroy(){
     RemoveHandlerFromDevices();
-    
-    // if thread is running wait for it to end
-    if(mIsAutoCalibrating){
-        mIsAutoCalibrating = false;
-        if(mAutoCalibrationThread.joinable()){
-            mAutoCalibrationThread.join();
-        }
-    }
-    
+
     // Clean up
     if(mSensorDevice){
         mSensorDevice.Clear();
@@ -58,7 +50,6 @@ void Oculus::destroy(){
 
 Oculus::Oculus(bool autoCalibrate)
 {
-    mIsAutoCalibrating = false;
     mIsConnected = false;
     
     // Init OVR
@@ -86,14 +77,6 @@ Oculus::Oculus(bool autoCalibrate)
         
         if (mSensorDevice){
             mSensorFusion.AttachToSensor(mSensorDevice);
-            
-            if( autoCalibrate ){
-                mIsAutoCalibrating = true;
-                mMagCalibration.BeginAutoCalibration( mSensorFusion );
-                mAutoCalibrationThread = std::thread( &Oculus::updateAutoCalibration, this );
-            } else {
-                mIsAutoCalibrating = false;
-            }
         } else {
             app::console() << "No Sensor found.\n";
         }
@@ -149,26 +132,6 @@ Vec2f Oculus::getScreenSize(){
 
 Vec2f Oculus::getScreenResolution(){
     return Vec2f( mHMDInfo.HResolution, mHMDInfo.VResolution);
-}
-
-void Oculus::updateAutoCalibration()
-{
-    while ( mIsAutoCalibrating )
-    {
-        mMagCalibration.UpdateAutoCalibration( mSensorFusion );
-        
-        if ( mMagCalibration.IsCalibrated() )
-        {
-            app::console() << "Autocalibration complete!" << std::endl;
-            mSensorFusion.SetYawCorrectionEnabled(true);
-            mIsAutoCalibrating = false;
-        }
-        else if( !mMagCalibration.IsAutoCalibrating() ){
-            mIsAutoCalibrating = false;
-        }
-        
-        ci::sleep( 1 );
-    }
 }
 
 

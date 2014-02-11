@@ -52,14 +52,9 @@ protected:
     OVR::HMDInfo                    mHMDInfo;
     OVR::SensorFusion               mSensorFusion;
     OVR::Ptr<OVR::SensorDevice>     mSensorDevice;
-    OVR::Util::MagCalibration       mMagCalibration;
     OVR::Util::Render::StereoConfig mStereoConfig;
 
-    bool                            mAutoCalibrationEnabled;
-    bool                            mIsAutoCalibrating;
     bool                            mIsConnected;
-    
-    std::thread                     mAutoCalibrationThread;
 
     struct DeviceStatusNotificationDesc
     {
