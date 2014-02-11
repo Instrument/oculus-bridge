@@ -118,6 +118,11 @@ ci::Quatf Oculus::getOrientation()
     return ci::Quatf( mSensorFusion->GetOrientation().w, mSensorFusion->GetOrientation().x, mSensorFusion->GetOrientation().y, mSensorFusion->GetOrientation().z );
 }
 
+Vec3f Oculus::getAcceleration()
+{
+    return Vec3f( mSensorFusion->GetAcceleration().x, mSensorFusion->GetAcceleration().y, mSensorFusion->GetAcceleration().z );
+}
+
 float Oculus::getLensSeparationDistance() {
     return mHMDInfo.LensSeparationDistance;
 }

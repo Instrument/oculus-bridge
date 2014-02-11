@@ -38,6 +38,7 @@ class OculusSocketServerApp : public AppNative {
     WebSocketServer     mServer;
    
     ci::Quatf           orientation;
+    ci::Vec3f           acceleration;
     gl::Texture         mBackgroundTexture;
 };
 
@@ -165,6 +166,14 @@ void OculusSocketServerApp::update()
         fmt % orientation.v.z;
 
         mServer.write(fmt.str());
+
+        acceleration = mOculusVR->getAcceleration();
+
+        boost::format fmta("{ \"m\" : \"acceleration\", \"a\" : %f }");
+
+        fmta % acceleration;
+
+        mServer.write(fmta.str());
     }
     
     if(mOculusVR && mOculusVR->isConnected()){

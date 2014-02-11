@@ -32,6 +32,7 @@ public:
     float       getDistortionScale();
     ci::Vec4f   getDistortionParams() const;
     ci::Quatf   getOrientation();
+    ci::Vec3f   getAcceleration();
     float       getLensSeparationDistance();
     ci::Vec2f   getScreenSize();
     ci::Vec2f   getScreenResolution();
