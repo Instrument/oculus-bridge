@@ -34,6 +34,15 @@
         margin-top:20px;
       }
 
+      #generic_error,
+      #security_error{
+        padding-top:200px;
+        width:500px;
+        margin-left:auto;
+        margin-right:auto;
+        display:none;
+      }
+
     </style>
 
   </head>
@@ -73,10 +82,18 @@
     </div>
 
     <div id="viewport"></div>
+    <div id="security_error">
+      <p>This file must be served via HTTP to support the use of textures.</p>
+      <p>Please host this content via a web server of some kind and try again.</p>
+    </div>
+    <div id="generic_error">
+      <p>Oh dang, something went wrong while trying to render the scene.</p>
+      <p>Exception: <span id="exception_message"></span></p>
+    </div>
     
     <script src="lib/OculusBridge.min.js"></script>
-
-    <script src="lib/three.min.r59.js"></script>
+    
+    <script src="lib/three.min.js"></script>
     <script src="lib/OrbitControls.js"></script>
     <script src="lib/RiftCamera.js"></script>
 
