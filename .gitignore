@@ -7,7 +7,7 @@ app/src/vc11/Debug/*
 app/src/vc11/Build/*
 app/src/xcode/build/*
 *.xcodeproj/xcuserdata/*.xcuserdatad
-*.xcodeproj/project.xcworkspace/xcuserdata/*.xcuserdatad
+*.xcworkspace
 xcuserdata
 
 

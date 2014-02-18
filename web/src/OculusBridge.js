@@ -150,11 +150,13 @@ var OculusBridge = function(config) {
 					updateConfig(data);
 				break;
 
+				// For backwards compatability with the bridge application.
 				case "orientation":
 					updateOrientation(data);
 				break;
 
-				case "acceleration":
+				case "update":
+					updateOrientation(data);
 					updateAcceleration(data);
 				break;
 

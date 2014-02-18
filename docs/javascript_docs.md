@@ -13,7 +13,9 @@ The OculusBridge object accepts a single configuration object that may contain a
 
 `onConfigUpdate` - **function**, a callback invoked when configuration data is recieved from the server.  A single argument is passed to this callback, it is a map of the metrics for the head mounted display.  These metrics are needed when rendering any images for use on the Oculus Rift.
 
-`onOrientationUpdate` - **function**, invoked whenever new orientation values are sent from the server (around 60 Hz).  The four quaternion values are passed to the callback as individual arguments.
+`onOrientationUpdate` - **function**, invoked whenever new orientation values are sent from the server (around 60 Hz).  A single object is passed to this callback, containing the quaternion values in the same format as the `getOrientation` method.
+
+`onAccelerationUpdate` - **function**, just like the orientation update, this function is invoked whenever new acceleration values are sent from the server (around 60 Hz).  A single object is passed to this callback with the same format as the `getAcceleration` method.
 
 `debug` - **boolean**, default is false, this parameter 
 
@@ -40,6 +42,10 @@ The OculusBridge object accepts a single configuration object that may contain a
 			var values = [quatValues.x, quatValues.y, quatValues.z, quatValues.w];
 			console.log("Orientation: " + values.join(", "));
 		}
+		"onAccelerationUpdate" : function(accelValues){
+			var values = [accelValues.x, accelValues.y, accelValues.z];
+			console.log("Acceleration: " + values.join(", "));
+		}
 	});
 
 	bridge.connect();
@@ -62,6 +68,16 @@ Example orientation object:
 		"y" : 1.1288273,
 		"z" : 0.1837934,
 		"w" : 0.0439387
+	}
+	
+`getAcceleration` - an alternative to using the `onAccelerationUpdate` callback, this method returns the last known accelerometer values sent from the server.  Acceleration values represent standard G's with the y-axis representing up and down.  In other words, if the headset is sitting motionless on a level surface you will see 9.8 in the y axis with zeros for x and z.
+
+Example acceleration object:
+
+	{
+		"x" : 0,
+		"y" : 9.8,
+		"z" : 0
 	}
 	
 `getConfiguration` - an alternative to using the `onConfigUpdate` callback, this method returns the metrics for the head mounted display.  If a connection has not been made, the values will default to the metrics for the currently released development hardware.

@@ -3,6 +3,7 @@ var point;
 var aspectRatio, windowHalf;
 
 var referenceCube;
+var accelerationIndicator;
 var oculusBridge;
 
 
@@ -16,9 +17,8 @@ function initScene() {
   scene = new THREE.Scene();  
 
   camera = new THREE.PerspectiveCamera(45, aspectRatio, 1, 10000);
-  camera.useQuaternion = true;
 
-  camera.position.set(100, 120, 100);
+  camera.position.set(120, 160, 120);
   camera.lookAt(scene.position);
 
   // Initialize the renderer
@@ -47,11 +47,49 @@ function initGeometry(){
 
   scene.add(floor);
 
-
   var material = new THREE.MeshLambertMaterial({ color: 0x29d6e1, emissive:0x297d67});
   referenceCube = new THREE.Mesh( new THREE.CubeGeometry(90, 60, 50), material);
 
   scene.add(referenceCube);
+
+  createAccelerometerUI();
+}
+
+
+function createAccelerometerUI(){
+
+  // build a grid for scale
+  var material = new THREE.LineBasicMaterial({ color: 0x515151 });
+
+  var geometry = new THREE.Geometry();
+  for(var i = -10; i < 11; i+=2){
+    geometry.vertices.push( new THREE.Vector3( i*10, 0, -100 ) );
+    geometry.vertices.push( new THREE.Vector3( i*10, 30, -100 ) );
+  }
+
+  geometry.vertices.push( new THREE.Vector3( -100, 10, -100 ) );
+  geometry.vertices.push( new THREE.Vector3( 100, 10, -100 ) );
+
+  geometry.vertices.push( new THREE.Vector3( -100, 20, -100 ) );
+  geometry.vertices.push( new THREE.Vector3( 100, 20, -100 ) );
+
+  var line = new THREE.Line( geometry, material, THREE.LinePieces );
+  scene.add( line );
+
+  // add indicators for accelerometer values
+  var accelerationValues = [
+    new THREE.Mesh( new THREE.CubeGeometry(1,10,1), new THREE.MeshLambertMaterial({color:0xff0000, emissive:0x600000}) ),
+    new THREE.Mesh( new THREE.CubeGeometry(1,10,1), new THREE.MeshLambertMaterial({color:0x00ff00, emissive:0x006000}) ),
+    new THREE.Mesh( new THREE.CubeGeometry(1,10,1), new THREE.MeshLambertMaterial({color:0x0000ff, emissive:0x000060}) )
+  ];
+
+  accelerationIndicator = new THREE.Object3D();
+  accelerationIndicator.position.set(0,5,-100);
+  for(var i = 0; i < accelerationValues.length; i++){
+    accelerationValues[i].position.set(0, i*10, 0);
+    accelerationIndicator.add(accelerationValues[i]);
+  }
+  scene.add(accelerationIndicator);
 }
 
 
@@ -86,9 +124,17 @@ function bridgeConfigUpdated(config){
   }
 }
 
+
+function bridgeAccelerationUpdated(accel) {
+  // scale values so 1g = 20 world units
+  accelerationIndicator.children[0].position.x = (accel.x * 1.02040816326531) * 2;
+  accelerationIndicator.children[1].position.x = (accel.y * 1.02040816326531) * 2;
+  accelerationIndicator.children[2].position.x = (accel.z * 1.02040816326531) * 2;
+}
+
 function bridgeOrientationUpdated(quat) {
   referenceCube.quaternion.set(quat.x, quat.y, quat.z, quat.w);
-}
+ }
 
 function bridgeConnected(){
   var stats = document.getElementById("stats");
@@ -125,10 +171,11 @@ function init(){
   // Create the bridge object and attempt to connect.
 
   oculusBridge = new OculusBridge({
-    onOrientationUpdate : bridgeOrientationUpdated,
-    onConfigUpdate      : bridgeConfigUpdated,
-    onConnect           : bridgeConnected,
-    onDisconnect        : bridgeDisconnected
+    onOrientationUpdate  : bridgeOrientationUpdated,
+    onAccelerationUpdate : bridgeAccelerationUpdated,
+    onConfigUpdate       : bridgeConfigUpdated,
+    onConnect            : bridgeConnected,
+    onDisconnect         : bridgeDisconnected
   });
 
   oculusBridge.connect();

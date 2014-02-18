@@ -343,6 +343,7 @@
 					"$(OCULUS_SDK)/LibOVR/Lib/MacOS/Debug/libovr.a",
 				);
 				PRODUCT_NAME = "Oculus Bridge";
+				SDKROOT = macosx10.9;
 				SYMROOT = ./build;
 				WRAPPER_EXTENSION = app;
 			};
@@ -378,6 +379,7 @@
 					"$(OCULUS_SDK)/LibOVR/Lib/MacOS/Release/libovr.a",
 				);
 				PRODUCT_NAME = "Oculus Bridge";
+				SDKROOT = macosx10.9;
 				STRIP_INSTALLED_PRODUCT = YES;
 				SYMROOT = ./build;
 				WRAPPER_EXTENSION = app;

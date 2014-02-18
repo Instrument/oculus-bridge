@@ -155,27 +155,25 @@ void OculusSocketServerApp::onDisconnect()
 
 void OculusSocketServerApp::update()
 {
-    if( mOculusVR  ) {
+    mOculusVR->handleMessages();
+    
+    if( mOculusVR && mOculusVR->isConnected() && mSocketConnected ) {
+       
+        boost::format fmt("{ \"m\" : \"update\", \"o\" : [%f,%f,%f,%f], \"a\" : [%f,%f,%f] }");
+        
         orientation = mOculusVR->getOrientation();
-
-        boost::format fmt("{ \"m\" : \"orientation\", \"o\" : [%f,%f,%f,%f] }");
+        acceleration = mOculusVR->getAcceleration();
         
         fmt % orientation.w;
         fmt % orientation.v.x;
         fmt % orientation.v.y;
         fmt % orientation.v.z;
 
+        fmt % acceleration.x;
+        fmt % acceleration.y;
+        fmt % acceleration.z;
+
         mServer.write(fmt.str());
-
-        acceleration = mOculusVR->getAcceleration();
-
-        boost::format fmta("{ \"m\" : \"acceleration\", \"a\" : [%f,%f,%f] }");
-
-        fmta % acceleration.x;
-        fmta % acceleration.y;
-        fmta % acceleration.z;
-
-        mServer.write(fmta.str());
     }
     
     if(mOculusVR && mOculusVR->isConnected()){
@@ -188,7 +186,6 @@ void OculusSocketServerApp::update()
     }
     
     mServer.poll();
-    mOculusVR->handleMessages();
 }
 
 void OculusSocketServerApp::draw()

@@ -12,7 +12,7 @@ Building the OculusBridge Application
 
 - Open the xcode project
 - Open the build settings
-- Change the two user-defined values for `CINDER_PATH` and `OCULUS_SDK` to point to the respective folders on your computer
+- Change the two user-defined values for `CINDER_PATH` and `OCULUS_SDK` to point to the respective folders on your computer.  Note: You may need to re-build the Oculus Rift libraries with `C++ Runtime Types` enabled to avoid errors when linking.
 
 
 ## VisualStudio 2012
